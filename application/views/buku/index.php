@@ -12,13 +12,15 @@
         </div>
     </div> -->
     <?php endif; ?>
-
+    <?php if($this->session->userdata('level') === '1'):?>
     <div class="row mt-3">
         <div class="col-md-6">
             <a href="<?= base_url(); ?>buku/tambah" class="btn btn-primary">Tambah
                 Data Buku</a>
         </div>
     </div>
+
+    <?php endif?>
 
     <div class="row mt-3">
         <div class="col-md-6">
@@ -50,7 +52,9 @@
                     <th>Penulis</th>
                     <th>Tahun Terbit</th>
                     <th>Jumlah Buku</th>
+                    <?php if($this->session->userdata('level') === '1'):?>
                     <th>Aksi</th>
+                    <?php endif?>
                 </tr>
             </thead>
             <tbody>
@@ -65,11 +69,13 @@
                     <td><?= $buku['id_penulis'];?></td>
                     <td><?= $buku['tahun_buku'];?></td>
                     <td><?= $buku['jumlah_buku'];?></td>
+                    <?php if($this->session->userdata('level') === '1'):?>
                     <td>
                         <a href="<?= base_url(); ?>buku/detail/<?= $buku['id_buku']; ?>" class="badge badge-success">detail</a>
                         <a href="<?= base_url(); ?>buku/ubah/<?= $buku['id_buku']; ?>" class="badge badge-warning">edit</a>
                         <a href="<?= base_url(); ?>buku/hapus/<?= $buku['id_buku']; ?>" class="badge badge-danger">hapus</a>
                 </td>
+                <?php endif?>
                 </tr>
                 <?php endforeach; ?>
                 </table>

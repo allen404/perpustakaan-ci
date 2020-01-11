@@ -1,10 +1,10 @@
 <div class="container" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-12">
-            <h2 style="text-align: center;margin-bottom: 30px; color:blue;"> <b><?php echo $judul; ?></b> </h2>
+            <h2 ><?php echo $judul; ?></h2>
             <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
               <thead>
-                <?php echo anchor('c_pinjam/input','<button type="button" class="btn btn-success"> + Tambah Data Peminjaman </button>'); ?>
+                <?php echo anchor('c_pinjam/input','<button type="button" class="btn btn-primary"> + Tambah Data Peminjaman </button>'); ?>
                 <hr>
                 <tr>
                     <th>No</th>

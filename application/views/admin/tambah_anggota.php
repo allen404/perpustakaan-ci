@@ -8,7 +8,7 @@
                     Form Tambah Data User
                 </div>
                 <div class="card-body">
-                    <form action="<?php echo base_url('admin/tambah'); ?>" method="post">
+                    <form action="<?php echo base_url('admin/tambah_anggota'); ?>" method="post">
 
                         <div class="form-group">
                             <label for="nama">Nama</label>

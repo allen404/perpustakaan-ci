@@ -8,16 +8,34 @@ class Admin extends CI_Controller
         $this->load->model('Admin_model');
         $this->load->library('form_validation');
         $this->load->model('Buku_model');
+        $this->load->model('model_perpus');
     }
 
     public function index()
+    {
+        if ($this->session->userdata('level') === '1')
+        {
+        $this->load->model('Admin_model');
+        $this->load->view('templates/header');
+        $this->load->view('admin/index');
+        $this->load->view('templates/footer');
+        }
+        else
+        {
+            echo "Anda tidak boleh mengakses halaman ini";
+        }
+    }
+
+
+
+    public function list_anggota()
     {
         $this->load->model('Admin_model', 'user');
 
 
         $this->load->library('pagination');
 
-        $config['base_url']='http://localhost/perpustakaan-ci/admin/index';
+        $config['base_url']='http://localhost/perpustakaan-ci/admin/list_anggota';
         $config['total_rows']= $this->user->countAllUser();
         $config['per_page'] = 12;
 
@@ -59,11 +77,11 @@ class Admin extends CI_Controller
             $data['user'] = $this->Admin_model->cariDataUser();
         }
         $this->load->view('templates/header', $data);
-        $this->load->view('admin/index', $data);
+        $this->load->view('admin/list_anggota', $data);
         $this->load->view('templates/footer');
     }
 
-    public function tambah()
+    public function tambah_anggota()
     {
         $data['judul'] = 'Form Tambah Data User';
 
@@ -75,7 +93,7 @@ class Admin extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
-            $this->load->view('admin/tambah');
+            $this->load->view('admin/tambah_anggota');
             $this->load->view('templates/footer');
         } else {
             $this->Admin_model->tambahDataUser();

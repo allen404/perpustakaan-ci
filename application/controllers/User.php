@@ -36,7 +36,7 @@ class User extends CI_Controller {
 
         if($level === '1')
         {
-          redirect('home/admin');
+          redirect('admin');
         }
 
         elseif($level === '2')
@@ -50,6 +50,21 @@ class User extends CI_Controller {
         redirect('login/index');
        
       }
+    }
+
+    function auth_guest()
+    {
+      $sesdata = array(
+        'nama' => "tamu",
+        'email' => "tamu",
+        'level' => '3',
+        'no_identitas' => "tamu",
+        'logged_in' => TRUE
+      );
+
+      $this->session->set_userdata($sesdata);
+      redirect('home/index');
+
     }
     function logout()
         {

@@ -33,9 +33,9 @@
 
           <?php if($this->session->userdata('level') === '1'):?>
         <ul class="navbar-nav">
-          <li class= "active"> <a class="nav-item nav-link" href="<?= base_url(); ?>home">Home
+          <li class= "active"> <a class="nav-item nav-link" href="<?= base_url(); ?>admin">Home
             <span class="sr-only">(current)</span></a></li>
-          <li><a class="nav-item nav-link" href="<?= base_url(); ?>admin">Daftar Anggota</a></li>
+          <li><a class="nav-item nav-link" href="<?= base_url(); ?>admin/list_anggota">Daftar Anggota</a></li>
           <li><a class="nav-item nav-link" href="<?= base_url(); ?>buku">Daftar Buku</a></li>
           <li><a class="nav-item nav-link" href="<?= base_url(); ?>c_pinjam">Daftar Peminjaman</a></li>
         </ul>
@@ -60,12 +60,29 @@
             </div>
               </li>
             </ul>
+
+            <?php elseif($this->session->userdata('level') === '3'):?>
+              <ul class="navbar-nav">
+            <li class= "active"> <a class="nav-item nav-link" href="<?= base_url(); ?>home/user">Home
+            <span class="sr-only">(current)</span></a></li>
+            <li><a class="nav-item nav-link" href="<?= base_url(); ?>buku">List Buku</a></li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Guest
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="<?php echo site_url('user/logout');?>">Logout</a>
+            </div>
+              </li>
+            </ul>
        
           
           <?php else:?>
             <ul class="navbar-nav">
             <li class= "active"> <a class="nav-item nav-link" href="<?php echo site_url('login'); ?>">Login
             <span class="sr-only">(current)</span></a></li>
+            <li><a class="nav-item nav-link" href="<?= base_url();?>user/auth_guest">Login Sebagai Tamu</a>
             </ul>
             
             <?php endif;?>

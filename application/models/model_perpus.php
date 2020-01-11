@@ -4,7 +4,8 @@
      function view_pinjam()
      {
          //ambil data peminjaman dari tabel peminjaman
-         $peminjaman = $this->db->query('peminjaman');
+         $sql = "SELECT * FROM peminjaman";
+         $peminjaman = $this->db->query($sql);
          return $peminjaman;
      }
 
@@ -27,6 +28,12 @@
      public function getIdPeminjaman($id)
      {
          return $this->db->get_where('peminjaman',['id_pinjam' => $id])->row_array();
+     }
+
+     public function getPeminjaman($where,$table)
+     {
+        return $this->db->get_where($table,$where);
+        
      }
 
      function view_user()

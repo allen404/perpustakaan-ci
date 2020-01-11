@@ -11,7 +11,8 @@ class Buku extends CI_Controller
 
     public function index()
     {
-        
+        if ($this->session->userdata('level') === '1' || $this->session->userdata('level') === '2' || $this->session->userdata('level') === '3' )
+        {
         $this->load->model('Buku_model', 'buku');
 
 
@@ -61,6 +62,11 @@ class Buku extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('buku/index', $data);
         $this->load->view('templates/footer');
+        }
+        else
+        {
+            echo "Anda tidak berhak mengakses halaman ini";
+        }
     }
 
     public function tambah()
