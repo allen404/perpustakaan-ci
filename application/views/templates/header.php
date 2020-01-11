@@ -24,45 +24,52 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <a class="navbar-brand" href="#">CI-Bootstrap</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
         <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        
+    </button>
+      <div class="collapse navbar-collapse" id="collapsingNavbar">
 
           <?php if($this->session->userdata('level') === '1'):?>
-            <div class="navbar-nav">
+        <ul class="navbar-nav">
           <li class= "active"> <a class="nav-item nav-link" href="<?= base_url(); ?>home">Home
             <span class="sr-only">(current)</span></a></li>
           <li><a class="nav-item nav-link" href="<?= base_url(); ?>admin">Daftar Anggota</a></li>
           <li><a class="nav-item nav-link" href="<?= base_url(); ?>buku">Daftar Buku</a></li>
           <li><a class="nav-item nav-link" href="<?= base_url(); ?>c_pinjam">Daftar Peminjaman</a></li>
-          <div class="navbar-nav navbar-right">
+        </ul>
+        <ul class="navbar-nav ml-auto">
           <li><a class="nav-item nav-link" href="<?php echo site_url('user/logout');?>">Sign Out</a></li>
         </div>
+          </ul>
        
           <?php elseif($this->session->userdata('level') === '2'):?>
-            <div class="navbar-nav">
+            <ul class="navbar-nav">
             <li class= "active"> <a class="nav-item nav-link" href="<?= base_url(); ?>home/user">Home
             <span class="sr-only">(current)</span></a></li>
             <li><a class="nav-item nav-link" href="<?= base_url(); ?>buku">List Buku</a></li>
-            <div class="navbar-nav navbar-right">
-              <li><a class="nav-item nav-link" href="<?php echo site_url('user/logout');?>">Sign Out</a></li>
+            <li><a class="nav-item nav-link" href="<?= base_url();?>c_pinjam/index_user">Daftar Peminjaman</a></li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['nama']?> (<?= $_SESSION['no_identitas'] ?>)
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="<?php echo site_url('user/logout');?>">Logout</a>
             </div>
-        </div>
+              </li>
+            </ul>
+       
           
           <?php else:?>
-            <div class="navbar-nav">
+            <ul class="navbar-nav">
             <li class= "active"> <a class="nav-item nav-link" href="<?php echo site_url('login'); ?>">Login
             <span class="sr-only">(current)</span></a></li>
-            </div>
+            </ul>
+            
             <?php endif;?>
-          
-        </div>
+  
       </div>
     </div>
   </nav>

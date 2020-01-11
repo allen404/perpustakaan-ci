@@ -4,8 +4,17 @@
      function view_pinjam()
      {
          //ambil data peminjaman dari tabel peminjaman
-         $peminjaman = $this->db->get('peminjaman');
+         $peminjaman = $this->db->query('peminjaman');
          return $peminjaman;
+     }
+
+
+     function view_pinjam_user()
+     {
+        $no_identitas = $this->session->userdata('no_identitas');
+        $sql = "SELECT * FROM peminjaman WHERE no_identitas = $no_identitas";
+        $peminjaman = $this->db->query($sql);
+        return $peminjaman;
      }
 
      function view_buku()

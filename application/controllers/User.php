@@ -23,10 +23,12 @@ class User extends CI_Controller {
         $nama = $data['nama'];
         $email = $data['email'];
         $level = $data['level'];
+        $no_identitas = $data['no_identitas'];
         $sesdata = array(
           'nama' => $nama,
           'email' => $email,
           'level' => $level,
+          'no_identitas' => $no_identitas,
           'logged_in' => TRUE
         );
 

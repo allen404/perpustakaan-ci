@@ -17,6 +17,15 @@
             $data['peminjaman'] = $this->model_perpus->view_pinjam()->result();
             $this->load->view('admin/data_pinjam',$data);
         }
+
+        function index_user()
+        {
+            $this->load->model('model_perpus');
+            $judul = "DATA PEMINJAMAN BUKU";
+            $data['judul'] = $judul;
+            $data['peminjaman'] = $this->model_perpus->view_pinjam_user()->result();
+            $this->load->view('user/u_datapinjam',$data);
+        }
         
         function input()
         {
