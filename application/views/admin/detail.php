@@ -12,6 +12,7 @@
                     <p class="card-text"><?= $user['no_identitas']; ?></p>
                     <p class="card-text"><?= $user['alamat']; ?></p>
                     <p class="card-text"><?= $user['level']; ?></p>
+                    
                     <a href="<?= base_url(); ?>admin" class="btn btn-primary">Kembali</a>
                 </div>
             </div>
