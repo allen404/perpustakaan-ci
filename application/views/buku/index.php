@@ -22,27 +22,15 @@
 
     <?php endif?>
 
-    <div class="row mt-3">
-        <div class="col-md-6">
-            <form action="" method="post">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Cari data buku.." name="keyword">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit">Cari</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
 
     <div class="row">
-        <div class="col-md-10"></div>
-
+        <div class="col-md-10">
         <h3 class="mt-3"> Daftar Buku </h3>
+        </div>
 
-        <table class="table">
+        <table id="table" class="table table-striped table-bordered" style="width:100%">
             <thead>
+            
                 <tr>
                     <th>#</th>
                     <th>ID</th>
@@ -83,3 +71,14 @@
                 </div>
     </div>
 </div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"></script>
+
+<script type="text/javascript">
+  $(document).ready( function () {
+      $('#table').DataTable();
+  } );
+</script>

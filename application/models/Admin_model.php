@@ -63,9 +63,9 @@ class Admin_model extends CI_model {
     public function cariDataUser()
     {
         $keyword = $this->input->post('keyword', true);
-        $this->db->like('Nama', $keyword);
-        $this->db->or_like('jurusan', $keyword);
-        $this->db->or_like('Nim', $keyword);
+        $this->db->like('no_identitas', $keyword);
+        $this->db->or_like('nama', $keyword);
+        $this->db->or_like('alamat', $keyword);
         $this->db->or_like('email', $keyword);
         return $this->db->get('user')->result_array();
     }
