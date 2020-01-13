@@ -5,17 +5,20 @@
         public function __construct()
     {
         parent::__construct();
-        $this->load->view('templates/header');
-        $this->load->view('templates/footer');
+    
     }
     
         function index()
         {
+ 
             $this->load->model('model_perpus');
             $judul = "DATA PEMINJAMAN BUKU";
             $data['judul'] = $judul;
             $data['peminjaman'] = $this->model_perpus->view_pinjam()->result();
+            $this->load->view('templates/header');
             $this->load->view('admin/data_pinjam',$data);
+            $this->load->view('templates/footer');
+            
         }
 
         function index_user()
@@ -24,7 +27,9 @@
             $judul = "DATA PEMINJAMAN BUKU";
             $data['judul'] = $judul;
             $data['peminjaman'] = $this->model_perpus->view_pinjam_user()->result();
+            $this->load->view('templates/header');
             $this->load->view('user/u_datapinjam',$data);
+            $this->load->view('templates/footer');
         }
 
         function index_nama_user()

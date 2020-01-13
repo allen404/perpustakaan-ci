@@ -41,13 +41,18 @@
           <li class="nav-item"><a class="nav-link" href="<?= base_url(); ?>c_pinjam">Daftar Peminjaman</a></li>
         </ul>
         <ul class="navbar-nav ml-auto">
-          <li><a class="nav-item nav-link" href="<?php echo site_url('user/logout');?>">Sign Out</a></li>
-        </div>
-          </ul>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['nama']?> (<?= $_SESSION['no_identitas'] ?>)
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="<?php echo site_url('user/logout');?>">Logout</a>
+            </div>
+              </li>
+            </ul>
        
           <?php elseif($this->session->userdata('level') === '2'):?>
             <ul class="navbar-nav">
-            <li class= "nav-item"> <a class="nav-link active" href="<?= base_url(); ?>home/user">Home
+            <li class= "nav-item"> <a class="nav-link active" href="<?= base_url(); ?>home">Home
             <span class="sr-only">(current)</span></a></li>
             <li class="nav-item"><a class="nav-link" href="<?= base_url(); ?>buku">List Buku</a></li>
             <li class="nav-item"><a class="nav-link" href="<?= base_url();?>c_pinjam/index_user">Daftar Peminjaman</a></li>
@@ -64,7 +69,7 @@
 
             <?php elseif($this->session->userdata('level') === '3'):?>
               <ul class="navbar-nav">
-            <li class= "nav-item"> <a class="nav-link active" href="<?= base_url(); ?>home/user">Home
+            <li class= "nav-item"> <a class="nav-link active" href="<?= base_url(); ?>home">Home
             <span class="sr-only">(current)</span></a></li>
             <li class="nav-item"><a class="nav-link" href="<?= base_url(); ?>buku">List Buku</a></li>
             </ul>
