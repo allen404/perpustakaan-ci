@@ -35,14 +35,14 @@
         function index_nama_user()
         {
             $this->load->model('model_perpus');
-            $data['peminjaman'] = $this->model_perpus->view_user()->result();
+            $data['user'] = $this->model_perpus->view_user()->result();
             $this->load->view('admin/data_pinjam',$data);
         }
 
         function index_judul_buku()
         {
             $this->load->model('model_perpus');
-            $data['peminjaman'] = $this->model_perpus->view_buku()->result();
+            $data['buku'] = $this->model_perpus->view_buku()->result();
             $this->load->view('admin/data_pinjam',$data);
         }
         

@@ -4,7 +4,7 @@
      function view_pinjam()
      {
          //ambil data peminjaman dari tabel peminjaman
-         $sql = "SELECT * FROM peminjaman";
+         $sql = "SELECT a.no_identitas, a.nama, b.judul_buku, b.id_buku, c.tgl_pinjam, c.tgl_kembali, c.lama_pinjam, c.denda, c.status FROM user a, buku b, peminjaman c WHERE a.no_identitas=c.no_identitas and b.id_buku=c.id_buku";
          $peminjaman = $this->db->query($sql);
          return $peminjaman;
      }
@@ -12,7 +12,7 @@
      function view_user()
      {
          //ambil data user dari tabel user
-         $sql = "SELECT * FROM user";
+         $sql = "SELECT nama  FROM user";
          $user = $this->db->query($sql);
          return $user;
      }
@@ -29,7 +29,7 @@
      function view_buku()
      {
         //ambil data buku dari tabel buku
-        $sql = "SELECT * FROM buku";
+        $sql = "SELECT judul_buku FROM buku";
         $buku = $this->db->query($sql);
         return $buku;
      }

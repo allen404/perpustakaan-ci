@@ -22,14 +22,6 @@
                     <?php
                         $offset = "";
                         if ($offset == "") { $i = 0; } else { $i = $offset; }
-                        foreach ($user as $u)
-                        {
-                            
-                        }
-                        foreach ($buku as $bk)
-                        {
-                            $judul = $bk->judul_buku;
-                        }
                         foreach ($peminjaman as $p) 
                         {
                             $i++;
@@ -37,8 +29,9 @@
                             $kembali = $p->tgl_pinjam;
                             $cari_hari = abs(strtotime($kembali) - strtotime($tgl_kembali));
                             $hitung_hari = floor($cari_hari/(60*60*24));
-
+                            $nama_user = $p->nama;
                             $no_identitas = $p->no_identitas;
+                            $judul = $p->judul_buku;
                             $id_buku = $p->id_buku;
                             $tglkembali = $p->tgl_kembali;
                             $denda = $p->denda;
