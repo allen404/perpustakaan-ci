@@ -53,6 +53,7 @@
         
         function input_simpan()
         {
+            $this->load->model('model_perpus');
             $tgl_kembali = date('d-m-Y');
             $cari_hari = abs(strtotime($this->input->post('tgl_pinjam')) - strtotime($tgl_kembali));
             $hitung_hari = floor($cari_hari/(60*60*24));
@@ -66,8 +67,21 @@
             }
             $nilai = "";
             $nilai_kembali="Belum Kembali";
-            $status = "";
+            $status = "belum";
             
+            $cek 	  = $this->model_perpus->get_where_peminjaman($this->input->post('no_identitas'))->num_rows();
+            $cek_buku = $this->model_perpus->get_where_buku($this->input->post('no_identitas'),$this->input->post('id_buku'))->num_rows();
+            if ($cek_buku>0) {
+                $this->session->set_flashdata('error', 'Proses ditolak, anggota telah meminjam buku tersebut.');
+                redirect($this->agent->referrer());
+            }else{
+
+            if ($cek>3) {
+                $this->session->set_flashdata('error', 'Proses ditolak, anggota telah meminjam 3 buku.');
+                redirect($this->agent->referrer());
+            }
+            else
+            {
             $peminjaman = array(
                 'id_pinjam'         =>  $nilai,
                 'no_identitas'      =>  $this->input->post('no_identitas'),
@@ -79,6 +93,7 @@
                 'status'            =>  $status);
             $this->db->insert('peminjaman',$peminjaman);
             redirect('c_pinjam');
+            }
         }
 
         function autocomplete()
@@ -163,6 +178,6 @@
         return $this->db->where('id_pinjam',$id_pinjam)->where('status','belum')->get('peminjaman');
         }
 
-
     }
+}
 ?>
