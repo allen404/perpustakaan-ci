@@ -29,23 +29,18 @@
                             $kembali = $p->tgl_pinjam;
                             $cari_hari = abs(strtotime($kembali) - strtotime($tgl_kembali));
                             $hitung_hari = floor($cari_hari/(60*60*24));
-                            $nama_user = $p->nama;
-                            $no_identitas = $p->no_identitas;
-                            $judul = $p->judul_buku;
-                            $id_buku = $p->id_buku;
-                            $tglkembali = $p->tgl_kembali;
-                            $denda = $p->denda;
+                            
                         ?>
                         <form method="post" action="<?php echo base_url('c_pinjam/kembali/'.$p->id_pinjam."/".$p->id_buku) ?>">
                             
                             <tr> 
                                 <td><?php echo $i; ?></td>
-                                <td><?php echo $nama_user($no_identitas); ?></td>
-                                <td><?php echo $judul($id_buku); ?></td>
-                                <td><?php echo $kembali ?></td>
-                                <td><?php echo $tglkembali; ?></td>
+                                <td><?php echo $p->nama; echo ' ('.$p->no_identitas.')'; ?></td>
+                                <td><?php echo $p->judul_buku; echo ' ('.$p->id_buku.')'; ?></td>
+                                <td><?php echo $p->tgl_pinjam; ?></td>
+                                <td><?php echo $p->tgl_kembali; ?></td>
                                 <td><?php echo $hitung_hari; ?> </td>
-                                <td> <?php echo $denda; ?> </td>
+                                <td> <?php echo $p->denda; ?> </td>
                                 <td>
                                     <a href="<?php echo base_url('index.php/c_pinjam/kembali/'.$p->id_pinjam.'/'.$p->tgl_pinjam) ?>" class="badge badge-warning"> K </a>
                                     <a href="<?php echo base_url('index.php/c_pinjam/perpanjang/'.$p->id_pinjam) ?>" "<?php if($p->status==="kembali"){echo "disabled";} ?>" class="badge badge-primary" title="Perpanjang" onclick="return confirm('Perpanjang dengan denda yang telah ditentukan?')">P</a>

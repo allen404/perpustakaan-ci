@@ -4,7 +4,7 @@
      function view_pinjam()
      {
          //ambil data peminjaman dari tabel peminjaman
-         $sql = "SELECT a.no_identitas, a.nama, b.judul_buku, b.id_buku, c.tgl_pinjam, c.tgl_kembali, c.lama_pinjam, c.denda, c.status FROM user a, buku b, peminjaman c WHERE a.no_identitas=c.no_identitas and b.id_buku=c.id_buku";
+         $sql = "SELECT c.id_pinjam, a.no_identitas, a.nama, b.judul_buku, b.id_buku, c.tgl_pinjam, c.tgl_kembali, c.lama_pinjam, c.denda, c.status FROM user a, buku b, peminjaman c WHERE a.no_identitas=c.no_identitas and b.id_buku=c.id_buku";
          $peminjaman = $this->db->query($sql);
          return $peminjaman;
      }
