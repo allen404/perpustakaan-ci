@@ -22,6 +22,14 @@
                     <?php
                         $offset = "";
                         if ($offset == "") { $i = 0; } else { $i = $offset; }
+                        foreach ($user as $u)
+                        {
+                            
+                        }
+                        foreach ($buku as $bk)
+                        {
+                            $judul = $bk->judul_buku;
+                        }
                         foreach ($peminjaman as $p) 
                         {
                             $i++;
@@ -34,8 +42,8 @@
                             
                             <tr> 
                                 <td><?php echo $i; ?></td>
-                                <td><?php echo $p->no_identitas; ?></td>
-                                <td><?php echo $p->id_buku; ?></td>
+                                <td><?php echo $nama_user($p->no_identitas); ?></td>
+                                <td><?php echo $judul($p->id_buku); ?></td>
                                 <td><?php echo $p->tgl_pinjam ?></td>
                                 <td><?php echo $p->tgl_kembali; ?></td>
                                 <td><?php echo $hitung_hari; ?> </td>

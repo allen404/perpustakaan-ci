@@ -9,6 +9,14 @@
          return $peminjaman;
      }
 
+     function view_user()
+     {
+         //ambil data user dari tabel user
+         $sql = "SELECT * FROM user";
+         $user = $this->db->query($sql);
+         return $user;
+     }
+
 
      function view_pinjam_user()
      {
@@ -21,7 +29,8 @@
      function view_buku()
      {
         //ambil data buku dari tabel buku
-        $buku = $this->db->get('buku');
+        $sql = "SELECT * FROM buku";
+        $buku = $this->db->query($sql);
         return $buku;
      }
 
@@ -34,13 +43,6 @@
      {
         return $this->db->get_where($table,$where);
         
-     }
-
-     function view_user()
-     {
-        //ambil data user dari tabel user
-        $user = $this->db->get('user');
-        return $user;
      }
 
      function view_rakbuku()
