@@ -36,8 +36,8 @@
                         ?>
                            <tr> 
                                 <td><?php echo $i; ?></td>
-                                <td><?php echo $p->no_identitas; ?></td>
-                                <td><?php echo $p->id_buku; ?></td>
+                                <td><?php echo $p->nama; echo ' ('.$p->no_identitas.')'; ?></td>
+                                <td><?php echo $p->judul_buku; echo ' ('.$p->id_buku.')'; ?></td>
                                 <td><?php echo $p->tgl_pinjam ?></td>
                                 <td><?php echo $p->tgl_kembali; ?></td>
                                 <td><?php echo $hitung_hari; ?> </td>

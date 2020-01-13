@@ -21,7 +21,7 @@
      function view_pinjam_user()
      {
         $no_identitas = $this->session->userdata('no_identitas');
-        $sql = "SELECT * FROM peminjaman WHERE no_identitas = $no_identitas";
+        $sql = "SELECT c.id_pinjam, a.no_identitas, a.nama, b.judul_buku, b.id_buku, c.tgl_pinjam, c.tgl_kembali, c.lama_pinjam, c.denda, c.status FROM user a, buku b, peminjaman c WHERE a.no_identitas=c.no_identitas and b.id_buku=c.id_buku and c.no_identitas = $no_identitas";
         $peminjaman = $this->db->query($sql);
         return $peminjaman;
      }
