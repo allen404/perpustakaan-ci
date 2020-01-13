@@ -41,7 +41,7 @@ class User extends CI_Controller {
 
         elseif($level === '2')
         {
-          redirect('home/user');
+          redirect('home');
         }
         
       }
@@ -69,7 +69,7 @@ class User extends CI_Controller {
     function logout()
         {
           $this->session->sess_destroy();
-          redirect('home');
+          redirect('landing_page');
         }
 
     public function register_user(){
