@@ -11,18 +11,14 @@ class Home extends CI_Controller {
     }
     public function index()
     {
-        $this->load->model('Admin_model');
+        if ($this->session->userdata('level') === '1' || $this->session->userdata('level') === '2' || $this->session->userdata('level') === '3' )
+        {
         $this->load->view('templates/header');
-        $this->load->view('templates/footer');
         $this->load->view('home/index');
-        
-    }
-
-    public function user()
-    {
-        $this->load->model('Admin_model');
-        $this->load->view('templates/header');
-        $this->load->view('home/user');
         $this->load->view('templates/footer');
+        }
+        else{
+            echo "Silahkan masuk terlebih dahulu";
+        }
     }
 }
