@@ -18,7 +18,7 @@
             <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
               <thead>
                 <!-- Tombol untuk memicu modal -->
-                <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#modalForm">
                     + Tambah Data Peminjaman
                 </button>
                 <hr>
