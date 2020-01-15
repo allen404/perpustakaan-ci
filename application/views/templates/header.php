@@ -39,6 +39,7 @@
           <li class="nav-item"><a class="nav-link" href="<?= base_url(); ?>admin/list_anggota">Daftar Anggota</a></li>
           <li class="nav-item"><a class="nav-link" href="<?= base_url(); ?>buku">Daftar Buku</a></li>
           <li class="nav-item"><a class="nav-link" href="<?= base_url(); ?>c_pinjam">Daftar Peminjaman</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= base_url(); ?>c_buku">Daftar Buku (rama)</a></li>
         </ul>
         <ul class="navbar-nav ml-auto">
               <li class="nav-item dropdown">
