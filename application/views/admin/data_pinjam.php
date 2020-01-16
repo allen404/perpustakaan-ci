@@ -1,7 +1,7 @@
 <div class="container" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-12">
-            <h2 ><?php echo $judul; ?></h2>
+            <h2><?php echo "Data Peminjaman"; ?></h2>
             <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
               <thead>
                 <?php echo anchor('c_pinjam/input','<button type="button" class="btn btn-primary"> + Tambah Data Peminjaman </button>'); ?>
