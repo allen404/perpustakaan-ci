@@ -34,7 +34,7 @@
         
         function input()
         {
-            $this->load->view('admin/v_pinjam');
+            $this->load->view('admin/data_pinjam');
         }
         
         function input_simpan()
