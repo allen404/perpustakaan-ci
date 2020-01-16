@@ -1,3 +1,15 @@
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<!-- bootstrap js -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<style>
+.btn-success{margin: 10px;}
+</style>
+</head>
+<body>
+
 <div class="container" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-12">
