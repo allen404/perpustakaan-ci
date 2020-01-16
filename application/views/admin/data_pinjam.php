@@ -29,14 +29,15 @@
                             $kembali = $p->tgl_pinjam;
                             $cari_hari = abs(strtotime($kembali) - strtotime($tgl_kembali));
                             $hitung_hari = floor($cari_hari/(60*60*24));
+                            
                         ?>
                         <form method="post" action="<?php echo base_url('c_pinjam/kembali/'.$p->id_pinjam."/".$p->id_buku) ?>">
                             
                             <tr> 
                                 <td><?php echo $i; ?></td>
-                                <td><?php echo $p->no_identitas; ?></td>
-                                <td><?php echo $p->id_buku; ?></td>
-                                <td><?php echo $p->tgl_pinjam ?></td>
+                                <td><?php echo $p->nama; echo ' ('.$p->no_identitas.')'; ?></td>
+                                <td><?php echo $p->judul_buku; echo ' ('.$p->id_buku.')'; ?></td>
+                                <td><?php echo $p->tgl_pinjam; ?></td>
                                 <td><?php echo $p->tgl_kembali; ?></td>
                                 <td><?php echo $hitung_hari; ?> </td>
                                 <td> <?php echo $p->denda; ?> </td>
@@ -55,6 +56,54 @@
 
               </tbody>
             </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalForm" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title" id="labelModalKu">Tambah Data Peminjaman</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Tutup</span>
+                </button>
+                
+            </div>
+
+            <!-- Modal Body -->
+            
+            <div class="modal-body">
+                <p class="statusMsg"></p>
+                <form action="c_pinjam/input_simpan" method="post">
+                <div class="form-group">
+                        <label for="no_identitas">NOMOR IDENTITAS</label>
+                        <input type="text" class="form-control" id="no_identitas" name="no_identitas" placeholder="Masukkan No. Identitas" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_buku">ID BUKU</label>
+                        <input type="text" class="form-control" id="id_buku" name="id_buku" placeholder="Masukkan ID Buku" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="tgl_pinjam">Tanggal Pinjam</label>
+                        <input type="date" class="form-control" id="tgl_pinjam" name="tgl_pinjam" placeholder="Masukkan Tanggal Pinjam" required/>
+                    </div> 
+                    
+                    <div class="modal-footer">
+                        <form action="c_pinjam/input_simpan" method="post">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary submitBtn"> Simpan Data </button>
+                        </form>
+                    </div> 
+                </form>
+            </div>
+           
+
+            <!-- Modal Footer -->
+            
         </div>
     </div>
 </div>
