@@ -1,3 +1,4 @@
+
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <!-- bootstrap js -->
@@ -13,10 +14,13 @@
 <div class="container" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-12">
-            <h2><?php echo "Data Peminjaman"; ?></h2>
+            <h2 ><?php echo $judul; ?></h2>
             <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
               <thead>
-                <?php echo anchor('c_pinjam/input','<button type="button" class="btn btn-primary"> + Tambah Data Peminjaman </button>'); ?>
+                <!-- Tombol untuk memicu modal -->
+                <button class="btn btn-primary" data-toggle="modal" data-target="#modalForm">
+                    + Tambah Data Peminjaman
+                </button>
                 <hr>
                 <tr>
                     <th>No</th>
@@ -54,8 +58,8 @@
                                 <td><?php echo $hitung_hari; ?> </td>
                                 <td> <?php echo $p->denda; ?> </td>
                                 <td>
-                                    <a href="<?php echo base_url('index.php/c_pinjam/kembali/'.$p->id_pinjam.'/'.$p->tgl_pinjam) ?>" class="badge badge-warning"> K </a>
-                                    <a href="<?php echo base_url('index.php/c_pinjam/perpanjang/'.$p->id_pinjam) ?>" "<?php if($p->status==="kembali"){echo "disabled";} ?>" class="badge badge-primary" title="Perpanjang" onclick="return confirm('Perpanjang dengan denda yang telah ditentukan?')">P</a>
+                                    <a href="<?php echo base_url('c_pinjam/kembali/'.$p->id_pinjam.'/'.$p->tgl_pinjam) ?>" class="badge badge-warning"> K </a>
+                                    <a href="<?php echo base_url('c_pinjam/perpanjang/'.$p->id_pinjam) ?>" "<?php if($p->status==="kembali"){echo "disabled";} ?>" class="badge badge-primary" title="Perpanjang" onclick="return confirm('Perpanjang dengan denda yang telah ditentukan?')">P</a>
                                     <?php echo anchor('c_pinjam/delete/'.$p->id_pinjam,'<button type="button" class="badge badge-danger"> HAPUS </button>'); ?>
                                 </td>
                             </tr>
@@ -119,7 +123,6 @@
         </div>
     </div>
 </div>
-
 
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
