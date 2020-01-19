@@ -104,36 +104,6 @@ class User extends CI_Controller {
      
     }
      
-    public function login_view(){
-     
-    $this->load->view("home/login");
-     
-    }
-     
-    function login_user(){ 
-      $user_login=array(
-     
-      'email'=>$this->input->post('email'),
-      'password'=>md5($this->input->post('password'))
-     
-        ); 
-    //$user_login['user_email'],$user_login['user_password']
-        $data['users']=$this->user_model->login_user();
-        //  if($data)
-          //{
-              
-            $this->session->set_userdata('id_user',$data['users'][0]['id_user']);
-            $this->session->set_userdata('no_identitas',$data['users'][0]['no_identitas']);
-            $this->session->set_userdata('nama',$data['users'][0]['nama']);
-            $this->session->set_userdata('alamat',$data['users'][0]['alamat']);
-            $this->session->set_userdata('email',$data['users'][0]['email']);
-
-            echo $this->session->set_userdata('id_user'); 
-            $this->load->view('home/user_profile.php',$data);
-     
-     
-     
-    }
 }
      
 ?>
