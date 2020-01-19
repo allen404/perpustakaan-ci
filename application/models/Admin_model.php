@@ -37,7 +37,7 @@ class Admin_model extends CI_model {
     public function hapusDataUser($id)
     {
         // $this->db->where('id', $id);
-        $this->db->delete('user', ['id' => $id]);
+        $this->db->delete('user', ['id_user' => $id]);
     }
 
     public function getUserById($id)

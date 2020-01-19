@@ -1,73 +1,111 @@
  <?php
     class c_buku extends CI_Controller
     {
+
+
+        public function __construct()
+                {
+                    parent::__construct();
+                    $this->load->model('Admin_model');
+                    $this->load->library('form_validation');
+                    $this->load->model('Buku_model');
+                    $this->load->model('model_perpus');
+                }
+
+
         function index()
         {
             $this->load->model('model_buku', 'buku');
-            $judul = "DATA BUKU";
-            $data['judul'] = $judul;
-            $data['start']= $this->uri->segment(2);
-            $data['buku'] = $this->buku->getAllBuku($data['start']);
-            $data['product'] = NULL;
-            $this->load->view('templates/header',$data);
+            $data['buku'] = $this->buku->getAllBuku();
+            $this->load->view('templates/header');
             $this->load->view('buku/buku',$data);
             $this->load->view('templates/footer');
             
         }
         
-        function input()   
+        public function input()   
         {
-            $this->load->view('buku/input_buku');
-        }
-        
-        function input_simpan()
-        {
-            $buku = array(
-                'id_buku'  =>  $this->input->post('id_buku'),
-                'genre_buku'    =>  $this->input->post('genre_buku'),
-                'judul_buku' => $this->input->post('judul_buku'),
-                'id_penerbit' => $this->input->post('id_penerbit'),
-                'id_penulis' => $this->input->post('id_penulis'),
-                'tahun_buku' => $this->input->post('tahun_buku'),
-                'jumlah_buku' => $this->input->post('jumlah_buku'),
-                'foto'          => $this->input->post('foto'));
 
-            $this->db->insert('buku',$buku);
-            redirect('c_buku');
+            $this->form_validation->set_rules('id_buku','id_buku','required');
+            $this->form_validation->set_rules('genre_buku','genre_buku','required');
+            $this->form_validation->set_rules('judul_buku','judul_buku','required');
+            $this->form_validation->set_rules('id_penerbit','id_penerbit','required');
+            $this->form_validation->set_rules('id_penulis','id_penulis','required');
+            $this->form_validation->set_rules('tahun_buku','tahun_buku','required');
+            $this->form_validation->set_rules('jumlah_buku','jumlah_buku','required');
+
+            if($this->form_validation->run() == false)
+            {
+                $this->load->view('templates/header');
+                $this->load->view('buku/input_buku');
+                $this->load->view('templates/footer');
+            }
+            else
+            {
+                $data = [
+                    'id_buku'  =>  $this->input->post('id_buku', true),
+                    'genre_buku'    =>  $this->input->post('genre_buku', true),
+                    'judul_buku' => $this->input->post('judul_buku', true),
+                    'id_penerbit' => $this->input->post('id_penerbit', true),
+                    'id_penulis' => $this->input->post('id_penulis', true),
+                    'tahun_buku' => $this->input->post('tahun_buku', true),
+                    'jumlah_buku' => $this->input->post('jumlah_buku', true),
+                    'foto'          => $this->input->post('foto', true)
+                    ];
+
+                    $this->db->insert('buku',$data);
+                    $this->session->set_flashdata('flash', 'Ditambahkan');
+                    redirect('c_buku');
+            }
+
+           
         }
-        
+
         function edit($id)
         {
-            $this->load->model('model_buku');
-            $data['product'] = $this->model_buku->getBukuById($id);
-            $this->load->view('buku/buku',$data);
-        }
-        
-        function edit_simpan()
-        {
-            $id = $this->input->post('id_buku');
-            $buku = array(
-                'id_buku'  =>  $this->input->post('id_buku'),
-                'genre_buku'    =>  $this->input->post('genre_buku'),
-                'judul_buku' => $this->input->post('judul_buku'),
-                'id_penerbit' => $this->input->post('id_penerbit'),
-                'id_penulis' => $this->input->post('id_penulis'),
-                'tahun_buku' => $this->input->post('tahun_buku'),
-                'jumlah_buku' => $this->input->post('jumlah_buku'),
-                'foto'          => $this->input->post('foto'));
+            $this->load->model('model_buku' ,'buku');
+            $data['buku'] = $this->buku->getBukuById($id);
 
-            $this->db->where('id_buku',$id);
-            $this->db->update('buku',$buku);
-            redirect('c_buku');
+            $this->form_validation->set_rules('lokasi','lokasi','required');
+            $this->form_validation->set_rules('genre_buku','genre_buku','required');
+            $this->form_validation->set_rules('judul_buku','judul_buku','required');
+            $this->form_validation->set_rules('id_penerbit','id_penerbit','required');
+            $this->form_validation->set_rules('id_penulis','id_penulis','required');
+            $this->form_validation->set_rules('tahun_buku','tahun_buku','required');
+            $this->form_validation->set_rules('jumlah_buku','jumlah_buku','required');
+
+            if($this->form_validation->run() == false)
+            {
+                $this->load->view('templates/header');
+                $this->load->view('buku/edit_buku',$data);
+                $this->load->view('templates/footer');
+            }
+
+            else
+            {
+                $data = [
+                    'id_buku'  =>  $this->input->post('id_buku', true),
+                    'genre_buku'    =>  $this->input->post('genre_buku', true),
+                    'judul_buku' => $this->input->post('judul_buku', true),
+                    'id_penerbit' => $this->input->post('id_penerbit', true),
+                    'id_penulis' => $this->input->post('id_penulis', true),
+                    'tahun_buku' => $this->input->post('tahun_buku', true),
+                    'jumlah_buku' => $this->input->post('jumlah_buku', true),
+                    'foto'          => $this->input->post('foto', true)
+                    ];
+                    $this->db->where('buku',$this->input->post('id_buku'));
+                    $this->db->update('buku', $data);
+                    $this->session->set_flashdata('flash', 'Ditambahkan');
+                    redirect('c_buku');
+            }
+
+            
         }
         
-        function delete()
+        function delete($id)
         {
-            $this->load->model('model_buku');
-            $id_buku = $this->uri->segment(3);
-            $this->db->where('id_buku', $id_buku);
-            $this->db->delete('buku');
-            $this->model_buku->delete($id_buku);
+            $this->db->delete('buku', ['id_buku' => $id]);
+            $this->session->set_flashdata('flash', 'Dihapus');
             redirect('c_buku');
         }
 

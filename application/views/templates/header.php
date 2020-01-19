@@ -37,9 +37,17 @@
         <ul class="navbar-nav">
           <li class="nav-item"><a class="nav-link" href="<?= base_url(); ?>admin">Home
           <li class="nav-item"><a class="nav-link" href="<?= base_url(); ?>admin/list_anggota">Daftar Anggota</a></li>
-          <li class="nav-item"><a class="nav-link" href="<?= base_url(); ?>c_buku">Daftar Buku (rama)</a></li>
           <li class="nav-item"><a class="nav-link" href="<?= base_url(); ?>c_pinjam">Daftar Peminjaman</a></li>
-          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrasi Buku
+          </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="<?= base_url();?>c_buku">Daftar Buku</a>
+                <a class="dropdown-item" href="<?= base_url();?>admin/penerbit">Daftar Penerbit</a>
+                <a class="dropdown-item" href="<?= base_url();?>admin/rakBuku">Daftar Rak Buku</a>
+                <a class="dropdown-item" href="<?= base_url();?>admin/regBuku">Daftar Registrasi Buku</a>
+                <a class="dropdown-item" href="<?= base_url();?>admin/penulis">Daftar Penulis</a>
+            </div>
         </ul>
         <ul class="navbar-nav ml-auto">
               <li class="nav-item dropdown">
