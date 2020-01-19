@@ -1,31 +1,36 @@
-<html>
-<head>
-	<title> Edit Data Penulis </title>
-	<link href="<?php echo base_url().'assets/css/stylelogin.css'?>" rel="stylesheet">
-</head>
-<body>
-	<?php echo form_open('c_penulis/edit_simpan'); ?>
-        <?php echo form_hidden('id',$this->uri->segment(3)); ?>
-	<form action="c_penulis/edit_simpan" method="get">
-		<h2> INPUT DATA PENULIS </h2>
-                <?php echo form_open('c_penulis/edit_simpan'); ?>
-                <?php echo form_hidden('id',$this->uri->segment(3)); ?>
-		<div class="container">
-            <label> <b> Id Penulis </b> </label> 
-			<?php echo form_input('id_penulis', $product['id_penulis'], array('placeholder'=>'Enter Id Penulis')); ?>
-            <label> <b> Nama Penerbit </b> </label> 
-			<?php echo form_input('nama_penulis', $product['nama_penulis'], array('placeholder'=>'Enter Nama Penulis')); ?>
-            <label> <b> Alamat </b> </label>
-			<?php echo form_input('alamat_penulis', $product['alamat_penulis'], array('placeholder'=>'Enter Alamat Penulis')); ?> 
-            <label> <b> No Telepon </b> </label>
-			<?php echo form_input('no_telp', $product['no_telp'], array('placeholder'=>'Enter No Telepon Penulis')); ?> 
-			<button type="sumbit"> SIMPAN DATA </button>  
+<div class="container">
+	<div class="row mt-3">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-header"> Form Ubah Data Penulis</div>
+			<div class="card-body">
+				<form action="" method="post">
+				<div class="form-group">
+						<label for="id_penulis">ID Penulis</label>
+						<input type="text" name="id_penulis" class="form-control" id="id_penulis" value="<?= $penulis['id_penulis']?>">
+						<small class="form-text text-danger"><?=form_error('id_penulis');?></small>
+					</div>
+					<div class="form-nama_penulis">
+						<label for="nama_penulis">Nama Penulis</label>
+						<input type="text" name="nama_penulis" class="form-control" id="nama_penulis" value="<?= $penulis['nama_penulis']?>">
+						<small class="form-text text-danger"><?=form_error('nama_penulis');?></small>
+					</div>
+					<div class="form-group">
+						<label for="alamat_penulis">Alamat Penulis</label>
+						<input type="text" name="alamat_penulis" class="form-control" id="alamat_penulis" value="<?= $penulis['alamat_penulis']?>">
+						<small class="form-text text-danger"><?=form_error('alamat_penulis');?></small>
+					</div>
+					<div class="form-group">
+						<label for="no_telp">Nomor Telepon</label>
+						<input type="text" name="no_telp" class="form-control" id="no_telp" value="<?= $penulis['no_telp']?>">
+						<small class="form-text text-danger"><?=form_error('no_telp');?></small>
+					</div>
+					<button type="submit" name="tambah" class="btn btn-primary float-right">Update Data</button>
+				</form>
+			</div>
 		</div>
-		<div class="container">
-                    <?php echo anchor('c_penerbit','<button type="button" class="kembali"> Kembali </button>'); ?>
-		</div>
-                <?php echo form_close(); ?>
-	</form>
-    
-</body>
-</html>
+	</div>
+</div>
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>

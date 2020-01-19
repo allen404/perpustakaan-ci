@@ -7,17 +7,15 @@
          $penulis = $this->db->get('penulis');
          return $penulis;
      }
-     
-     function product($id_penulis)
-     {
-         return $this->db->get_where('penulis',array('id_penulis'=>$id_penulis));
-     }
 
-     function delete($id_penulis)
-     {
-         $this->db->where('id_penulis',$id_penulis);
-         $this->db->delete('penulis');
-     }
-     
+     public function getAllPenulis()
+    {
+        return $this->db->get('penulis')->result_array();
+    }
+
+    public function getPenulisById($id)
+    {
+       return $this->db->get_where('penulis', ['id_penulis  ' => $id])->row_array();
+    }
      
 }

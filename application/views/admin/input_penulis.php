@@ -1,28 +1,36 @@
-<html>
-<head>
-	<title> Input Data Penulis </title>
-	<link href="<?php echo base_url().'assets/css/stylelogin.css'?>" rel="stylesheet">
-</head>
-<body>
-	<?php echo form_open('c_penulis/input_simpan'); ?>
-	<form action="c_penulis/input_simpan" method="post">
-		<h2> INPUT DATA PENULIS </h2>
-		<div class="container">
-            <?php echo form_open('c_penulis/input_simpan'); ?>
-            <label> <b> Id Penulis  </b> </label> 
-			<input type="text" placeholder="Enter Id Penulis" name="id_penulis" required> 
-			<label> <b> Nama Penulis </b> </label>
-			<input type="text" placeholder="Enter Nama Penulis" name="nama_penulis" required> 
-            <label> <b> Alamat Penulis </b> </label>
-			<input type="text" placeholder="Enter Alamat Penulis" name="alamat_penulis" required> 
-            <label> <b> No Telepon</b> </label>
-			<input type="text" placeholder="Enter No Telepon Penulis" name="no_telp" required> 
-			<button type="sumbit"> SIMPAN DATA </button>  
+<div class="container">
+	<div class="row mt-3">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-header"> Form Tambah Data Penulis</div>
+			<div class="card-body">
+				<form action="" method="post">
+					<div class="form-group">
+						<label for="id_penulis">ID Penulis</label>
+						<input type="text" name="id_penulis" class="form-control" id="id_penulis">
+						<small class="form-text text-danger"><?=form_error('id_penulis');?></small>
+					</div>
+					<div class="form-group">
+						<label for="nama_penulis">Nama Penulis</label>
+						<input type="text" name="nama_penulis" class="form-control" id="nama_penulis">
+						<small class="form-text text-danger"><?=form_error('nama_penulis');?></small>
+					</div>
+					<div class="form-group">
+						<label for="alamat_penulis">Alamat Penulis</label>
+						<input type="text" name="alamat_penulis" class="form-control" id="alamat_penulis">
+						<small class="form-text text-danger"><?=form_error('alamat_penulis');?></small>
+					</div>
+					<div class="form-group">
+						<label for="no_telp">Nomor Telepon</label>
+						<input type="text" name="no_telp" class="form-control" id="no_telp">
+						<small class="form-text text-danger"><?=form_error('no_telp');?></small>
+					</div>
+					<button type="submit" name="tambah" class="btn btn-primary float-right">Tambah Data</button>
+				</form>
+			</div>
 		</div>
-		<div class="container">
-            <?php echo anchor('c_penulis','<button type="button" class="kembali"> Kembali </button>'); ?>
-		</div>
-	</form>
-    <?php echo form_close(); ?>
-</body>
-</html>
+	</div>
+</div>
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>

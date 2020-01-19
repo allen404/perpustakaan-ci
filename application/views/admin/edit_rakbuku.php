@@ -1,27 +1,24 @@
-<html>
-<head>
-	<title> Edit Data Rak Buku </title>
-	<link href="<?php echo base_url().'assets/css/stylelogin.css'?>" rel="stylesheet">
-</head>
-<body>
-	<?php echo form_open('c_rakbuku/edit_simpan'); ?>
-        <?php echo form_hidden('id',$this->uri->segment(3)); ?>
-	<form action="c_rakbuku/edit_simpan" method="get">
-		<h2> INPUT DATA RAK BUKU </h2>
-                <?php echo form_open('c_rakbuku/edit_simpan'); ?>
-                <?php echo form_hidden('id',$this->uri->segment(3)); ?>
-		<div class="container">
-            <label> <b> Kode Rak </b> </label> 
-			<?php echo form_input('kode_rak', $product2['kode_rak'], array('placeholder'=>'Enter Kode Rak')); ?>
-            <label> <b> Lokasi </b> </label>
-			<?php echo form_input('lokasi', $product2['lokasi'], array('placeholder'=>'Enter Lokasi Rak')); ?> 
-			<button type="sumbit"> SIMPAN DATA </button>  
+<div class="container">
+	<div class="row mt-3">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-header"> Form Tambah Data Rak Buku</div>
+			<div class="card-body">
+				<form action="" method="post">
+					<div class="form-group">
+						<label for="kode_rak">Kode Rak</label>
+						<input type="text" name="kode_rak" class="form-control" id="kode_rak" value="<?= $rak_buku['kode_rak']?>">
+						<small class="form-text text-danger"><?=form_error('kode_rak');?></small>
+					</div>
+					<div class="form-group">
+						<label for="lokasi">Lokasi</label>
+						<input type="text" name="lokasi" class="form-control" id="lokasi" value="<?= $rak_buku['lokasi']?>">
+						<small class="form-text text-danger"><?=form_error('lokasi');?></small>
+					</div>
+					<button type="submit" name="tambah" class="btn btn-primary float-right">Ubah Data</button>
+				</form>
+			</div>
 		</div>
-		<div class="container">
-                    <?php echo anchor('c_rakbuku','<button type="button" class="kembali"> Kembali </button>'); ?>
-		</div>
-                <?php echo form_close(); ?>
-	</form>
-    
-</body>
-</html>
+	</div>
+</div>
+</div>

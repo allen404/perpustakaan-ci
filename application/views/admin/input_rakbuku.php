@@ -1,24 +1,26 @@
-<html>
-<head>
-	<title> Input Data Rak Buku </title>
-	<link href="<?php echo base_url().'assets/css/stylelogin.css'?>" rel="stylesheet">
-</head>
-<body>
-	<?php echo form_open('c_rakbuku/input_simpan'); ?>
-	<form action="c_rakbuku/input_simpan" method="post">
-		<h2> INPUT DATA RAK BUKU </h2>
-		<div class="container">
-            <?php echo form_open('c_rakbuku/input_simpan'); ?>
-            <label> <b> Kode Rak  </b> </label> 
-			<input type="text" placeholder="Enter Kode Rak" name="kode_rak" required> 
-			<label> <b> Lokasi </b> </label>
-			<input type="text" placeholder="Enter Lokasi Rak" name="lokasi" required> 
-			<button type="sumbit"> SIMPAN DATA </button>  
+<div class="container">
+	<div class="row mt-3">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-header"> Form Tambah Data Rak Buku</div>
+			<div class="card-body">
+				<form action="" method="post">
+					<div class="form-group">
+						<label for="kode_rak">Kode Rak</label>
+						<input type="text" name="kode_rak" class="form-control" id="kode_rak">
+						<small class="form-text text-danger"><?=form_error('kode_rak');?></small>
+					</div>
+					<div class="form-group">
+						<label for="lokasi">Lokasi</label>
+						<input type="text" name="lokasi" class="form-control" id="lokasi">
+						<small class="form-text text-danger"><?=form_error('lokasi');?></small>
+					</div>
+					<button type="submit" name="tambah" class="btn btn-primary float-right">Tambah Data</button>
+				</form>
+			</div>
 		</div>
-		<div class="container">
-            <?php echo anchor('c_rakbuku','<button type="button" class="kembali"> Kembali </button>'); ?>
-		</div>
-	</form>
-    <?php echo form_close(); ?>
-</body>
-</html>
+	</div>
+</div>
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>

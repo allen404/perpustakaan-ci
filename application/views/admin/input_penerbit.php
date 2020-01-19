@@ -4,7 +4,7 @@
 			<div class="card">
 				<div class="card-header"> Form Tambah Data Penerbit</div>
 			<div class="card-body">
-				<form action="<?= base_url();?>admin/input_simpanPenerbit" method="post">
+				<form action="" method="post">
 					<div class="form-group">
 						<label for="id_penerbit">ID Penerbit</label>
 						<input type="text" name="id_penerbit" class="form-control" id="id_penerbit">
@@ -32,3 +32,5 @@
 	</div>
 </div>
 </div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>

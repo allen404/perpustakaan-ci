@@ -31,8 +31,8 @@
                                 <td><?= $penerbit['alamat_penerbit']?></td>
                                 <td><?= $penerbit['no_telp']?></td>
                                 <td align="center">
-                                    <a href="<?=base_url();?>admin/edit/<?=$penerbit['id_penerbit']?>" class="btn btn-warning">Edit</a>
-                                    <a href="<?=base_url();?>admin/delete/<?=$penerbit['id_penerbit']?>" class="btn btn-danger">Hapus</a>
+                                    <a href="<?=base_url();?>admin/editpenerbit/<?=$penerbit['id_penerbit']?>" class="btn btn-warning">Edit</a>
+                                    <a href="<?=base_url();?>admin/deletepenerbit/<?=$penerbit['id_penerbit']?>" class="btn btn-danger">Hapus</a>
                                 </td>
                             </tr>
                     <?php 

@@ -17,6 +17,18 @@
      {
         return $this->db->get_where('penerbit', ['id_penerbit' => $id])->row_array();   
      }
+
+     public function updateDataPenerbit()
+     {
+         $data = [
+             "nama_penerbit" => $this->input->post('nama_penerbit',true),
+             "alamat_penerbit" => $this->input->post('alamat_penerbit',true),
+             "no_telp" => $this->input->post('no_telp',true)
+         ];
+
+         $this->db->where('id_penerbit', $this->input->post('id_penerbit'));
+         $this->db->update('penerbit',$data);
+     }
      
      function product($id_penerbit)
      {

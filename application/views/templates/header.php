@@ -44,6 +44,9 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="<?= base_url();?>c_buku">Daftar Buku</a>
                 <a class="dropdown-item" href="<?= base_url();?>admin/penerbit">Daftar Penerbit</a>
+                <a class="dropdown-item" href="<?= base_url();?>admin/rakBuku">Daftar Rak Buku</a>
+                <a class="dropdown-item" href="<?= base_url();?>admin/regBuku">Daftar Registrasi Buku</a>
+                <a class="dropdown-item" href="<?= base_url();?>admin/penulis">Daftar Penulis</a>
             </div>
         </ul>
         <ul class="navbar-nav ml-auto">

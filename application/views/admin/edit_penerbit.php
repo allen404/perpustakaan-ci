@@ -1,31 +1,36 @@
-<html>
-<head>
-	<title> Edit Data Penerbit </title>
-	<link href="<?php echo base_url().'assets/css/stylelogin.css'?>" rel="stylesheet">
-</head>
-<body>
-	<?php echo form_open('c_penerbit/edit_simpan'); ?>
-        <?php echo form_hidden('id',$this->uri->segment(3)); ?>
-	<form action="c_penerbit/edit_simpan" method="get">
-		<h2> INPUT DATA PENERBIT </h2>
-                <?php echo form_open('c_penerbit/edit_simpan'); ?>
-                <?php echo form_hidden('id',$this->uri->segment(3)); ?>
-		<div class="container">
-            <label> <b> Id Penerbit </b> </label> 
-			<?php echo form_input('id_penerbit', $product['id_penerbit'], array('placeholder'=>'Enter Id Penerbit')); ?>
-            <label> <b> Nama Penerbit </b> </label> 
-			<?php echo form_input('nama_penerbit', $product['nama_penerbit'], array('placeholder'=>'Enter Nama Penerbit')); ?>
-            <label> <b> Alamat </b> </label>
-			<?php echo form_input('alamat_penerbit', $product['alamat_penerbit'], array('placeholder'=>'Enter Alamat Penerbit')); ?> 
-            <label> <b> No Telepon </b> </label>
-			<?php echo form_input('no_telp', $product['no_telp'], array('placeholder'=>'Enter No Telepon Penerbit')); ?> 
-			<button type="sumbit"> SIMPAN DATA </button>  
+<div class="container">
+	<div class="row mt-3">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-header"> Form Ubah Data Penerbit</div>
+			<div class="card-body">
+				<form action="" method="post">
+				<div class="form-group">
+						<label for="id_penerbit">ID Penerbit</label>
+						<input type="text" name="id_penerbit" class="form-control" id="id_penerbit" value="<?= $penerbit['id_penerbit']?>">
+						<small class="form-text text-danger"><?=form_error('id_penerbit');?></small>
+					</div>
+					<div class="form-group">
+						<label for="nama_penerbit">Nama Penerbit</label>
+						<input type="text" name="nama_penerbit" class="form-control" id="nama_penerbit" value="<?= $penerbit['nama_penerbit']?>">
+						<small class="form-text text-danger"><?=form_error('nama_penerbit');?></small>
+					</div>
+					<div class="form-group">
+						<label for="alamat_penerbit">Alamat Penerbit</label>
+						<input type="text" name="alamat_penerbit" class="form-control" id="alamat_penerbit" value="<?= $penerbit['alamat_penerbit']?>">
+						<small class="form-text text-danger"><?=form_error('alamat_penerbit');?></small>
+					</div>
+					<div class="form-group">
+						<label for="no_telepon">Nomor Telepon</label>
+						<input type="text" name="no_telp" class="form-control" id="no_telp" value="<?= $penerbit['no_telp']?>">
+						<small class="form-text text-danger"><?=form_error('no_telp');?></small>
+					</div>
+					<button type="submit" name="tambah" class="btn btn-primary float-right">Tambah Data</button>
+				</form>
+			</div>
 		</div>
-		<div class="container">
-                    <?php echo anchor('c_penerbit','<button type="button" class="kembali"> Kembali </button>'); ?>
-		</div>
-                <?php echo form_close(); ?>
-	</form>
-    
-</body>
-</html>
+	</div>
+</div>
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
