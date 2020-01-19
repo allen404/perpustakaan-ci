@@ -118,26 +118,13 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    
+
     public function ubah($id)
     {
-        $data['judul'] = 'Form Ubah Data User';
-        $data['user'] = $this->Admin_model->getUserById($id);
-       
-        $this->form_validation->set_rules('nama', 'nama', 'required');
-        $this->form_validation->set_rules('no_identitas', 'nomor_identitas', 'required');
-        $this->form_validation->set_rules('password', 'password', 'required');
-        $this->form_validation->set_rules('email', 'email', 'required|valid_email');
-        $this->form_validation->set_rules('alamat', 'alamat', 'required');
-
-        if ($this->form_validation->run() == false) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('admin/ubah', $data);
-            $this->load->view('templates/footer');
-        } else {
-            $this->Admin_model->ubahDataUser();
-            $this->session->set_flashdata('flash', 'Diubah');
-            redirect('admin');
-        }
+        $this->load->model('Admin_model');
+        $data['user'] = $this->Admin_model->getUserById($id); 
+        $this->load->view('admin/list_anggota', $data);
+ 
     }
-
 }

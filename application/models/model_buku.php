@@ -8,6 +8,16 @@
          return $buku;
      }
 
+     public function getAllBuku()
+     {
+         return $this->db->get('buku')->result_array();
+     }
+
+     public function getBukuById($id)
+     {
+        return $this->db->get_where('buku', ['id_buku' => $id])->row_array();
+     }
+
      function view_user()
      {
         //ambil data user dari tabel user

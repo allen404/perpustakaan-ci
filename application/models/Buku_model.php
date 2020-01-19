@@ -1,9 +1,9 @@
 <?php
 
 class Buku_model extends CI_model {
-    public function getAllBuku()
+    public function getAllBuku($start)
     {
-        return $this->db->get('buku')->result_array();
+        return $this->db->get('buku', $start)->result_array();
     }
     public function getBuku($limit, $start)
     {

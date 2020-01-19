@@ -3,11 +3,13 @@
     {
         function index()
         {
-            $this->load->model('model_buku');
+            $this->load->model('model_buku', 'buku');
             $judul = "DATA BUKU";
             $data['judul'] = $judul;
-            $data['buku'] = $this->model_buku->view_buku()->result();
-            $this->load->view('templates/header');
+            $data['start']= $this->uri->segment(2);
+            $data['buku'] = $this->buku->getAllBuku($data['start']);
+            $data['product'] = NULL;
+            $this->load->view('templates/header',$data);
             $this->load->view('buku/buku',$data);
             $this->load->view('templates/footer');
             
@@ -34,12 +36,11 @@
             redirect('c_buku');
         }
         
-        function edit()
+        function edit($id)
         {
             $this->load->model('model_buku');
-            $id_buku = $this->uri->segment(3);
-            $data['product'] = $this->model_buku->product($id_buku)->row_array();
-            $this->load->view('buku/edit_buku',$data);
+            $data['product'] = $this->model_buku->getBukuById($id);
+            $this->load->view('buku/buku',$data);
         }
         
         function edit_simpan()
