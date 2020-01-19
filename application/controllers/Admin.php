@@ -127,4 +127,53 @@ class Admin extends CI_Controller
         $this->load->view('admin/list_anggota', $data);
  
     }
+
+
+    //Fungsi Penerbit
+
+    function penerbit()
+    {
+        $this->load->model('model_penerbit','penerbit');
+        $judul = "Data Penerbit";
+        $data['judul'] = $judul;
+        $data['penerbit'] = $this->penerbit->getAllPenerbit();
+        $this->load->view('templates/header');
+        $this->load->view('admin/penerbit',$data);
+        $this->load->view('templates/footer');
+    }
+
+    function inputPenerbit()
+    {
+        $this->load->view('templates/header');
+        $this->load->view('admin/input_penerbit');
+        $this->load->view('templates/footer');
+    }
+
+    function input_simpanPenerbit()
+    {
+        $penerbit = array(
+            'id_penerbit'  =>  $this->input->post('id_penerbit'),
+            'nama_penerbit'  =>  $this->input->post('nama_penerbit'),
+            'alamat_penerbit'    =>  $this->input->post('alamat_penerbit'),
+            'no_telp'    =>  $this->input->post('no_telp'));
+        $this->db->insert('penerbit',$penerbit);
+        redirect('admin/penerbit');
+    }   
+
+    function deletePenerbit()
+    {
+            $this->load->model('model_penerbit');
+            $id_penerbit = $this->uri->segment(3);
+            $this->db->where('id_penerbit', $id_penerbit);
+            $this->db->delete('penerbit');
+            $this->model_penerbit->delete($id_penerbit);
+            redirect('c_penerbit');
+    }
+
+    function editPenerbit()
+    {
+
+
+    }
+    
 }
