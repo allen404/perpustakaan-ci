@@ -5,7 +5,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    Form Tambah Data User
+                    Form Tambah Data Anggota
                 </div>
                 <div class="card-body">
                     <form action="<?php echo base_url('admin/tambah_anggota'); ?>" method="post">

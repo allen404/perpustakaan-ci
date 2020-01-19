@@ -4,45 +4,40 @@
      function view_pinjam()
      {
          //ambil data peminjaman dari tabel peminjaman
-         $sql = "SELECT * FROM peminjaman";
+         $sql = "SELECT c.id_pinjam, a.no_identitas, a.nama, b.judul_buku, b.id_buku, c.tgl_pinjam, c.tgl_kembali, c.lama_pinjam, c.denda, c.status FROM user a, buku b, peminjaman c WHERE a.no_identitas=c.no_identitas and b.id_buku=c.id_buku";
          $peminjaman = $this->db->query($sql);
          return $peminjaman;
      }
-
-
+     function view_user()
+     {
+         //ambil data user dari tabel user
+         $sql = "SELECT nama  FROM user";
+         $user = $this->db->query($sql);
+         return $user;
+     }
      function view_pinjam_user()
      {
         $no_identitas = $this->session->userdata('no_identitas');
-        $sql = "SELECT * FROM peminjaman WHERE no_identitas = $no_identitas";
+        $sql = "SELECT c.id_pinjam, a.no_identitas, a.nama, b.judul_buku, b.id_buku, c.tgl_pinjam, c.tgl_kembali, c.lama_pinjam, c.denda, c.status FROM user a, buku b, peminjaman c WHERE a.no_identitas=c.no_identitas and b.id_buku=c.id_buku and c.no_identitas = $no_identitas";
         $peminjaman = $this->db->query($sql);
         return $peminjaman;
      }
-
      function view_buku()
      {
         //ambil data buku dari tabel buku
-        $buku = $this->db->get('buku');
+        $sql = "SELECT judul_buku FROM buku";
+        $buku = $this->db->query($sql);
         return $buku;
      }
-
      public function getIdPeminjaman($id)
      {
          return $this->db->get_where('peminjaman',['id_pinjam' => $id])->row_array();
      }
-
      public function getPeminjaman($where,$table)
      {
         return $this->db->get_where($table,$where);
         
      }
-
-     function view_user()
-     {
-        //ambil data user dari tabel user
-        $user = $this->db->get('user');
-        return $user;
-     }
-
      function view_rakbuku()
      {
         //ambil data rak buku dari tabel rak buku
@@ -54,18 +49,15 @@
      {
          return $this->db->get_where('peminjaman',array('id_pinjam'=>$id_pinjam));
      }
-
      function product2($kode_rak)
      {
         return $this->db->get_where('rak_buku',array('kode_rak'=>$kode_rak));
      }
-
      function delete($id_pinjam)
      {
          $this->db->where('id_pinjam',$id_pinjam);
          $this->db->delete('peminjaman');
      }
-
      function delete2($kode_rak)
      {
         $this->db->where('kode_rak',$kode_rak);
@@ -90,15 +82,11 @@
     function get_where_peminjaman($id_pinjam){
         return $this->db->where('id_pinjam',$id_pinjam)->where('status','belum')->get('peminjaman');
     }
-
     function get_where($table,array $where)
     {
         return $this->db->where($where)->get($table);
     }
-
     function update($table,$where,$wherenya,array $data){
         return $this->db->where($where,$wherenya)->update($table,$data);
     }
-
 }
-
