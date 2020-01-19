@@ -172,13 +172,3 @@
       $('#table_id').DataTable();
   } );
 </script>
-
-<script type="text/javascript">
-$(document).on("click", ".openModalFormEditBuku", function () {
-     var myBookId = $(this).data('id_buku');
-     $(".modal-body #id_buku").val( myBookId );
-     // As pointed out in comments, 
-     // it is unnecessary to have to manually call the modal.
-     // $('#addBookDialog').modal('show');
-});
-</script>
