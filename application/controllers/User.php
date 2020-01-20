@@ -103,6 +103,14 @@ class User extends CI_Controller {
     }
      
     }
+
+
+    //Fungsi Profil User
+
+    public function profil()
+    {
+      
+    }
      
 }
      

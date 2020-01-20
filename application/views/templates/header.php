@@ -27,7 +27,7 @@
 <body>
 
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">CI-Bootstrap</a>
+      <a class="navbar-brand" href="#">Perpustakaan Ambyar</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -63,7 +63,7 @@
             <ul class="navbar-nav">
             <li class= "nav-item"> <a class="nav-link active" href="<?= base_url(); ?>home">Home
             <span class="sr-only">(current)</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="<?= base_url(); ?>buku">List Buku</a></li>
+            <li class="nav-item"><a class="nav-link" href="<?= base_url(); ?>c_buku">List Buku</a></li>
             <li class="nav-item"><a class="nav-link" href="<?= base_url();?>c_pinjam/index_user">Daftar Peminjaman</a></li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -72,6 +72,7 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="<?php echo site_url('user/logout');?>">Logout</a>
+                <a class="dropdown-item" href="<?= base_url();?>"
             </div>
               </li>
             </ul>
