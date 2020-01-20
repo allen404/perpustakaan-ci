@@ -398,7 +398,8 @@ class Admin extends CI_Controller
     {  
         if ($this->session->userdata('level') === '1')
         {
-            $data['reg_buku'] = $this->reg_buku->getRekBukuById($id);
+            $this->load->model('model_regbuku', 'reg_buku');
+            $data['reg_buku'] = $this->reg_buku->getRegBukuById($id);
 
             $this->form_validation->set_rules('no_reg','no_reg','required');
             $this->form_validation->set_rules('id_buku','id_buku','required');
@@ -407,11 +408,10 @@ class Admin extends CI_Controller
 
             if($this->form_validation->run() == false)
             {
-                $this->load->view('templates/header');
-                $this->load->view('buku/input_regbuku');
+                $this->load->view('templates/header',$data);
+                $this->load->view('buku/edit_regbuku',$data);
                 $this->load->view('templates/footer');
             }
-
             else
             {
                 $data = [

@@ -7,9 +7,9 @@
         return $this->db->get('reg_buku')->result_array();
     }
 
-    public function getRakById($id)
+    public function getRegBukuById($id)
     {
-       return $this->db->get_where('rak_buku', ['kode_rak' => $id])->row_array();
+       return $this->db->get_where('reg_buku', ['no_reg' => $id])->row_array();
     }
 
 }
