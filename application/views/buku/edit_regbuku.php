@@ -23,7 +23,7 @@
 					<div class="form-group">
 						<label for="tgl_registrasi">Tanggal Registrasi</label>
 						<input type="date" name="tgl_registrasi" class="form-control" id="tgl_registrasi" value="<?= $reg_buku['tgl_registrasi'];?>">
-						<small class="form-text text-danger"><?=form_error('lokasi');?></small>
+						<small class="form-text text-danger"><?=form_error('tgl_registrasi');?></small>
 					</div>
 					<button type="submit" name="tambah" class="btn btn-primary float-right">Tambah Data</button>
 				</form>

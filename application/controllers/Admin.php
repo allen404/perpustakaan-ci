@@ -420,7 +420,7 @@ class Admin extends CI_Controller
                     'kode_rak' => $this->input->post('kode_rak'),
                     'tgl_registrasi' => $this->input->post('tgl_registrasi')
                 ];
-                $this->db->where('reg_buku',$this->input->post('no_reg'));
+                $this->db->where('no_reg',$this->input->post('no_reg'));
                 $this->db->update('reg_buku', $data);
                 redirect('admin/regBuku');   
             }
