@@ -19,9 +19,6 @@
                 Data Anggota Perpustakaan</a>
         </div>
     </div>
-
-
-
     <div class="row">
         <div class="col-md-10"></div>
         <h3 class="mt-3"> Daftar Mahasiswa </h3>
@@ -57,10 +54,7 @@
                 </td>
                 </tr>
                 <?php endforeach; ?>
-
-
                 </table>
-                <?= $this->pagination->create_links(); ?>
                 </div>
     </div>
 </div>

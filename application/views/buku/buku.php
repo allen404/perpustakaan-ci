@@ -4,7 +4,6 @@
             <h2 style="text-align: left;margin-bottom: 30px; color:black;">Data Buku</h2>
             <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
               <thead>
-                    <a href="<?= base_url(); ?>c_buku/input" class="btn btn-primary">Input Data Buku</a>
                 <hr>
                 <tr>
                     <th>No </th>
@@ -16,8 +15,6 @@
                     <th>ID Penulis</th>
                     <th>Tahun Buku</th>
                     <th>Jumlah Buku</th>
-               <th style="width:125px;">Action
-                  </p></th>
                 </tr>
               </thead>
               <tbody>
@@ -41,10 +38,6 @@
                                 <td><?= $buku['id_penulis']?></td> 
                                 <td><?= $buku['tahun_buku']?></td> 
                                 <td><?= $buku['jumlah_buku']?></td> 
-                                <td align="center">
-                                    <a href="<?=base_url();?>c_buku/edit/<?= $buku['id_buku'] ?>" type="button" class="btn btn-warning"> EDIT </a>
-                                    <a href="<?= base_url();?>c_buku/delete/<?= $buku['id_buku'] ?>" type="button" class="btn btn-danger"> HAPUS </a>
-                                </td>
                             </tr>
                     <?php 
                         }
