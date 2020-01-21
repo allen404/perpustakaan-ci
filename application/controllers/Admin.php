@@ -107,7 +107,7 @@ class Admin extends CI_Controller
         }
     }
 
-    
+
 
     public function ubah($id)
     {
@@ -115,7 +115,7 @@ class Admin extends CI_Controller
         {
             $this->load->model('Admin_model');
 
-            $data['user'] = $this->Admin_model->getUserById($id); 
+            $data['user'] = $this->Admin_model->getUserById($id);
             $this->form_validation->set_rules('nama', 'nama', 'required');
             $this->form_validation->set_rules('no_identitas', 'Nomor_identitas', 'required');
             $this->form_validation->set_rules('password', 'Password', 'required');
@@ -269,7 +269,7 @@ class Admin extends CI_Controller
             if($this->form_validation->run() == false)
             {
                 $this->load->view('templates/header');
-                $this->load->view('admin/input_rakBuku');
+                $this->load->view('admin/input_rakbuku');
                 $this->load->view('templates/footer');
             }
             else
@@ -322,7 +322,7 @@ class Admin extends CI_Controller
         {
             echo "Anda tidak boleh mengakses halaman ini";
         }
-    
+
     }
 
     public function hapusRakBuku($id)
@@ -385,7 +385,7 @@ class Admin extends CI_Controller
                 ];
 
                 $this->db->insert('reg_buku',$data);
-                redirect('admin/regBuku');   
+                redirect('admin/regBuku');
             }
         }
         else
@@ -395,7 +395,7 @@ class Admin extends CI_Controller
     }
 
     public function editRegBuku($id)
-    {  
+    {
         if ($this->session->userdata('level') === '1')
         {
             $this->load->model('model_regbuku', 'reg_buku');
@@ -422,7 +422,7 @@ class Admin extends CI_Controller
                 ];
                 $this->db->where('no_reg',$this->input->post('no_reg'));
                 $this->db->update('reg_buku', $data);
-                redirect('admin/regBuku');   
+                redirect('admin/regBuku');
             }
         }
         else
@@ -493,7 +493,7 @@ class Admin extends CI_Controller
                 $this->db->insert('penulis',$data);
                 redirect('admin/penulis');
 
-                
+
             }
         }
         else
@@ -531,14 +531,14 @@ class Admin extends CI_Controller
                     ];
                     $this->db->where('id_penulis',$this->input->post('id_penulis'));
                     $this->db->update('penulis', $data);
-                    redirect('admin/penulis');   
+                    redirect('admin/penulis');
                 }
         }
         else
         {
             echo "Anda tidak boleh mengakses halaman ini";
         }
-            
+
     }
 
     public function hapusPenulis($id)
