@@ -1,5 +1,5 @@
 <?php
- class model_regbuku extends CI_Model
+ class Model_regbuku extends CI_Model
  {
  
      public function getAllRegBuku()

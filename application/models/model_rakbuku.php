@@ -1,6 +1,6 @@
 <?php
 
-class model_rakbuku extends CI_Model
+class Model_rakbuku extends CI_Model
 {
 
     public function getAllRak()
