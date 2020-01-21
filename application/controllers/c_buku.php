@@ -3,14 +3,14 @@
     {
 
 
-        public function __construct()
+      /*  public function __construct()
         {
                     parent::__construct();
                     $this->load->model('Admin_model');
                     $this->load->library('form_validation');
                     $this->load->model('Buku_model');
                     $this->load->model('model_perpus');
-        }
+        }*/
 
 
         function index()
