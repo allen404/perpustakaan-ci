@@ -28,20 +28,20 @@
                         foreach ($peminjaman as $p) 
                         {
                             $i++;
-                            $tgl_kembali = date('d-m-Y');
+                            $tgl_kembali = $p->tgl_kembali;
                             $kembali = $p->tgl_pinjam;
                             $cari_hari = abs(strtotime($kembali) - strtotime($tgl_kembali));
                             $hitung_hari = floor($cari_hari/(60*60*24));
 
                         ?>
                            <tr> 
-                                <td><?php echo $i; ?></td>
-                                <td><?php echo $p->no_identitas; ?></td>
-                                <td><?php echo $p->id_buku; ?></td>
-                                <td><?php echo $p->tgl_pinjam ?></td>
+                           <td><?php echo $i; ?></td>
+                                <td><?php echo $p->nama; echo ' ('.$p->no_identitas.')'; ?></td>
+                                <td><?php echo $p->judul_buku; echo ' ('.$p->id_buku.')'; ?></td>
+                                <td><?php echo $p->tgl_pinjam; ?></td>
                                 <td><?php echo $p->tgl_kembali; ?></td>
                                 <td><?php echo $hitung_hari; ?> </td>
-                                <td><?php echo $p->denda; ?> </td>
+                                <td> <?php echo $p->denda; ?> </td>
                                 <td><?php echo $p->status; ?></td>
                             </tr>
                         <?php 
