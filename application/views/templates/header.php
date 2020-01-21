@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  
+
 
 
   <!-- Bootstrap CSS -->
@@ -16,11 +16,11 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="<?= base_url();?>assets/css/style.css">
-  
+
   <script src="<?= base_url();?>assets/js/main.js"></script>
   <script src="<?= base_url(); ?>assets/js/sweetalert2.all.min.js"></script>
   <script src="<?= base_url(); ?>assets/js/myscript.js"></script>
-  
+
 
 </head>
 
@@ -58,7 +58,7 @@
             </div>
               </li>
             </ul>
-       
+
           <?php elseif($this->session->userdata('level') === '2'):?>
             <ul class="navbar-nav">
               <li class="nav-item"><a class="nav-link" href="<?= base_url(); ?>home">Home
@@ -78,9 +78,8 @@
 
             <?php elseif($this->session->userdata('level') === '3'):?>
               <ul class="navbar-nav">
-            <li class= "nav-item"> <a class="nav-link active" href="<?= base_url(); ?>home">Home
-            <span class="sr-only">(current)</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="<?= base_url(); ?>buku">List Buku</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= base_url();?>home">Home
+                <li class="nav-item"><a class="nav-link" href="<?= base_url();?>c_buku">List Buku</a></li>
             </ul>
             <ul class="navbar-nav ml-auto">
               <li class="nav-item dropdown">
@@ -91,19 +90,18 @@
             </div>
               </li>
             </ul>
-       
-          
+
+
           <?php else:?>
             <ul class="navbar-nav">
             <li class= "nav-item "> <a class="nav-link active" href="<?php echo site_url('login'); ?>">Login
             <span class="sr-only">(current)</span></a></li>
             <li><a class="nav-item nav-link" href="<?= base_url();?>user/auth_guest">Login Sebagai Tamu</a>
             </ul>
-            
+
             <?php endif;?>
-  
+
       </div>
     </div>
   </nav>
 
-  
