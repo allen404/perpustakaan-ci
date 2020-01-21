@@ -87,7 +87,6 @@
                 $this->load->model('model_buku' ,'buku');
                 $data['buku'] = $this->buku->getBukuById($id);
 
-                $this->form_validation->set_rules('lokasi','lokasi','required');
                 $this->form_validation->set_rules('genre_buku','genre_buku','required');
                 $this->form_validation->set_rules('judul_buku','judul_buku','required');
                 $this->form_validation->set_rules('id_penerbit','id_penerbit','required');
@@ -114,7 +113,7 @@
                         'jumlah_buku' => $this->input->post('jumlah_buku', true),
                         'foto'          => $this->input->post('foto', true)
                         ];
-                        $this->db->where('buku',$this->input->post('id_buku'));
+                        $this->db->where('id_buku',$this->input->post('id_buku'));
                         $this->db->update('buku', $data);
                         $this->session->set_flashdata('flash', 'Ditambahkan');
                         redirect('c_buku');
