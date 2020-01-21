@@ -1,5 +1,5 @@
  <?php
-    class c_buku extends CI_Controller
+    class C_buku extends CI_Controller
     {
 
 

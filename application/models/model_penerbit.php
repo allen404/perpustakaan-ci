@@ -1,5 +1,5 @@
 <?php
- class model_penerbit extends CI_Model
+ class Model_penerbit extends CI_Model
  {
      function view_penerbit()
      {

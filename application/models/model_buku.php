@@ -1,5 +1,5 @@
 <?php
- class model_buku extends CI_Model
+ class Model_buku extends CI_Model
  {
      function view_buku()
      {
