@@ -1,5 +1,5 @@
 <?php
- class model_perpus extends CI_Model
+ class Model_perpus extends CI_Model
  {
      function view_pinjam()
      {

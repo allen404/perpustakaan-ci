@@ -1,5 +1,5 @@
 <?php
-    class c_perpus extends CI_Controller
+    class C_perpus extends CI_Controller
     {
         function index()
         {

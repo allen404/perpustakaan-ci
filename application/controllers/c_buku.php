@@ -1,8 +1,6 @@
- <?php
-    class c_buku extends CI_Controller
+<?php
+    class C_buku extends CI_Controller
     {
-
-
         public function __construct()
         {
                     parent::__construct();
@@ -32,13 +30,15 @@
                     $this->load->view('buku/buku',$data);
                     $this->load->view('templates/footer');
             }
-            
+
         }
-        
-        public function input()   
+
+        public function input()
         {
             if($this->session->userdata('level') === '1')
             {
+
+
 
                 $this->form_validation->set_rules('id_buku','id_buku','required');
                 $this->form_validation->set_rules('genre_buku','genre_buku','required');
@@ -77,7 +77,7 @@
                 echo "Anda tidak boleh mengakses halaman ini";
             }
 
-           
+
         }
 
         function edit($id)
@@ -124,9 +124,9 @@
             {
                 echo "Anda tidak boleh mengakses halaman ini";
             }
-            
+
         }
-        
+
         function delete($id)
         {
             if($this->session->userdata('level') === '1')
@@ -161,9 +161,9 @@
             $config['max_size']             = 100;
             $config['max_width']            = 1024;
             $config['max_height']           = 768;
-        
+
             $this->load->library('upload', $config);
-        
+
             if ( ! $this->upload->do_upload('foto')){
                 $error = array('error' => $this->upload->display_errors());
                 $this->load->view('input_buku', $error);
@@ -176,6 +176,6 @@
         {
             echo "Anda tidak boleh mengakses halaman ini";
         }
-    }         
+    }
 }
 ?>
