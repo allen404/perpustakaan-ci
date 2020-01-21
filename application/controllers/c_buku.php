@@ -1,16 +1,14 @@
 <?php
     class C_buku extends CI_Controller
     {
-
-
-      /*  public function __construct()
+        public function __construct()
         {
                     parent::__construct();
                     $this->load->model('Admin_model');
                     $this->load->library('form_validation');
                     $this->load->model('Buku_model');
                     $this->load->model('model_perpus');
-        }*/
+        }
 
 
         function index()
@@ -39,6 +37,8 @@
         {
             if($this->session->userdata('level') === '1')
             {
+
+
 
                 $this->form_validation->set_rules('id_buku','id_buku','required');
                 $this->form_validation->set_rules('genre_buku','genre_buku','required');
