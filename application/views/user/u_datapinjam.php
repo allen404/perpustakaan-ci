@@ -40,7 +40,7 @@
                                 <td><?php echo $p->judul_buku; echo ' ('.$p->id_buku.')'; ?></td>
                                 <td><?php echo $p->tgl_pinjam; ?></td>
                                 <td><?php echo $p->tgl_kembali; ?></td>
-                                <td><?php echo $hitung_hari; ?> </td>
+                                <td><?php echo $p->lama_pinjam; ?> </td>
                                 <td> <?php echo $p->denda; ?> </td>
                                 <td><?php echo $p->status; ?></td>
                             </tr>

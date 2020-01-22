@@ -61,7 +61,8 @@
                 $telat = 0;
                 $denda = 0;
             }
-            $nilai = "";
+
+            $nilai = null;
             $nilai_kembali="Belum Kembali";
             $status = "belum";
             
@@ -86,8 +87,7 @@
                     'tgl_pinjam'        =>  $this->input->post('tgl_pinjam'),
                     'tgl_kembali'       =>  $nilai_kembali,
                     'lama_pinjam'       =>  $hitung_hari,
-                    'denda'             =>  '0',
-                    'status'            =>  $status);
+                    'denda'             =>  '0');
                 $this->db->insert('peminjaman',$peminjaman);
                 redirect('c_pinjam');
                 }
