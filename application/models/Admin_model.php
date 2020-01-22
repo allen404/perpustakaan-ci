@@ -45,6 +45,11 @@ class Admin_model extends CI_model {
         return $this->db->get_where('user', ['id_user' => $id])->row_array();
     }
 
+    public function getPeminjamanByNoIdentitas($id)
+    {
+        return $this->db->get_where('peminjaman', ['nomor_identitas' => $id])->row_array();
+    }
+
     public function ubahDataUser()
     {
         $data = [

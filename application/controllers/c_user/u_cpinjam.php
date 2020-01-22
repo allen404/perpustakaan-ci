@@ -1,5 +1,5 @@
 <?php
-    class u_cpinjam extends CI_Controller
+    class U_cpinjam extends CI_Controller
     {
         function index()
         {

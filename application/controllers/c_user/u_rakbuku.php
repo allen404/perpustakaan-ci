@@ -1,5 +1,5 @@
 <?php
-    class u_rakbuku extends CI_Controller
+    class U_rakbuku extends CI_Controller
     {
         function index()
         {

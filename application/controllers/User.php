@@ -1,18 +1,18 @@
 <?php
 
 class User extends CI_Controller {
- 
+
     public function __construct(){
 
       parent::__construct();
       $this->load->model('user_model');
     }
-     
+
     public function index()
     {
       $this->load->view('login');
     }
-     
+
     function auth()
     {
       $email = $this->input->post('email',TRUE);
@@ -43,12 +43,12 @@ class User extends CI_Controller {
         {
           redirect('home');
         }
-        
+
       }
       else{
         echo $this->session->set_flashdata('msg','Password atau email anda salah');
         redirect('login/index');
-       
+
       }
     }
 
@@ -73,7 +73,7 @@ class User extends CI_Controller {
         }
 
     public function register_user(){
-     
+
         $user=array(
           'nama'=>$this->input->post('nama'),
           'no_identitas' => $this->input->post('no_identitas'),
@@ -82,28 +82,18 @@ class User extends CI_Controller {
           'password'=>md5($this->input->post('password')),
           'level'=>$this->input->post('level')
             );
-            print_r($user);
-
-   
-     
     $email_check=$this->user_model->email_check($user['email']);
-     
     if($email_check){
       $this->user_model->register_user($user);
       $this->session->set_flashdata('success_msg', 'Registered successfully.Now login to your account.');
       redirect('login');
-     
     }
     else{
-     
+
       $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
       redirect('login');
-     
-     
     }
-     
     }
-     
+    //Fungsi Profil User
 }
-     
 ?>

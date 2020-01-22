@@ -1,5 +1,5 @@
 <?php
- class model_penulis extends CI_Model
+ class Model_penulis extends CI_Model
  {
      function view_penulis()
      {
