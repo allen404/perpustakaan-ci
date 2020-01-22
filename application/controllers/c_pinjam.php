@@ -77,8 +77,9 @@
 
         function input_simpan()
         {
-            if ($this->session->userdata('level') === '1')
-            {
+          
+           if ($this->session->userdata('level') === '1'){
+
                     $this->load->model('model_perpus');
                     $tgl_kembali = date('d-m-Y');
                     $cari_hari = abs(strtotime($this->input->post('tgl_pinjam')) - strtotime($tgl_kembali));
@@ -91,7 +92,8 @@
                         $telat = 0;
                         $denda = 0;
                     }
-                    $nilai = "";
+
+                    $nilai = null;
                     $nilai_kembali="Belum Kembali";
                     $status = "belum";
 
@@ -101,12 +103,6 @@
                         $this->session->set_flashdata('error', 'Proses ditolak, anggota telah meminjam buku tersebut.');
                         redirect($this->agent->referrer());
                     }
-                    else
-                    {
-                        if ($cek>3) {
-                            $this->session->set_flashdata('error', 'Proses ditolak, anggota telah meminjam 3 buku.');
-                            redirect($this->agent->referrer());
-                        }
                         else
                         {
                         $peminjaman = array(
@@ -116,17 +112,15 @@
                             'tgl_pinjam'        =>  $this->input->post('tgl_pinjam'),
                             'tgl_kembali'       =>  $nilai_kembali,
                             'lama_pinjam'       =>  $hitung_hari,
-                            'denda'             =>  '0',
-                            'status'            =>  $status);
+                            'denda'             =>  '0');
                         $this->db->insert('peminjaman',$peminjaman);
                         redirect('c_pinjam');
                         }
-                    }
-                }
-                else
-                {
-                    echo "Anda tidak boleh mengakses halamn ini";;
-                }
+           }
+          else
+          {
+            echo "Anda tidak boleh mengakses halaman ini";
+          }
         }
 
 
