@@ -19,7 +19,7 @@
 <body>
 
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Perpustakaan Ambyar</a>
+      <a class="navbar-brand" style="color: white">Perpustakaan Ambyar</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>

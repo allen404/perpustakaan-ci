@@ -31,7 +31,7 @@
       </div>
       <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
         <div class="card-body">
-          <h5 class="card-title"<?php echo $this->model_perpus->getPeminjaman(array('status' => 'perpanjang'),'peminjaman')->num_rows();?>></h5>
+          <h5 class="card-title"><?php echo $this->model_perpus->getPeminjaman(array('status'=> 'perpanjang'),'peminjaman')->num_rows();?></h5>
             <p class="card-text">Jumlah peminjaman yang belum kembali</p>
         </div>
       <div class="card-header">
