@@ -41,10 +41,11 @@
                         foreach ($peminjaman as $p) 
                         {
                             $i++;
-                            $tgl_kembali = $p->tgl_kembali;
+                            $tgl_kembali = $p->tgl_pinjam;
                             $kembali = $p->tgl_pinjam;
                             $cari_hari = abs(strtotime($kembali) - strtotime($tgl_kembali));
                             $hitung_hari = floor($cari_hari/(60*60*24));
+                            
                             
                         ?>
                         <form method="post" action="<?php echo base_url('c_pinjam/kembali/'.$p->id_pinjam."/".$p->id_buku) ?>">
