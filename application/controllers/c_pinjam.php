@@ -77,7 +77,7 @@
 
         function input_simpan()
         {
-          
+
            if ($this->session->userdata('level') === '1'){
 
                     $this->load->model('model_perpus');
@@ -99,7 +99,7 @@
 
                     $cek 	  = $this->model_perpus->get_where_peminjaman($this->input->post('no_identitas'))->num_rows();
                     $cek_buku = $this->model_perpus->get_where_buku($this->input->post('no_identitas'),$this->input->post('id_buku'))->num_rows();
-                    if ($cek_buku>0) {
+                    if ($cek_buku > '0' ) {
                         $this->session->set_flashdata('error', 'Proses ditolak, anggota telah meminjam buku tersebut.');
                         redirect($this->agent->referrer());
                     }
@@ -112,7 +112,8 @@
                             'tgl_pinjam'        =>  $this->input->post('tgl_pinjam'),
                             'tgl_kembali'       =>  $nilai_kembali,
                             'lama_pinjam'       =>  $hitung_hari,
-                            'denda'             =>  '0');
+                            'denda'             =>  '0',
+                            'status'            => '');
                         $this->db->insert('peminjaman',$peminjaman);
                         redirect('c_pinjam');
                         }
@@ -144,8 +145,7 @@
                     $data = array(
                         'denda'         => '0',
                         'tgl_pinjam'    =>  date("Y-m-d"),
-                        'tgl_kembali'   => '(Diperpanjang)',
-                        'lama_pinjam'   => $hitung_hari );
+                        'tgl_kembali'   => '(Diperpanjang)' );
                     $id = $this->uri->segment(3);
                     $this->db->where('id_pinjam',$id);
                     $this->db->update('peminjaman',$data);
