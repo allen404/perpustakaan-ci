@@ -129,10 +129,23 @@
             if ($this->session->userdata('level') === '1')
             {
                     $this->load->model('model_perpus');
+                    $this->load->model('model_perpus');
+                    $tgl_kembali = date('d-m-Y');
+                    $cari_hari = abs(strtotime($this->input->post('tgl_pinjam')) - strtotime($tgl_kembali));
+                    $hitung_hari = floor($cari_hari/(60*60*24));
+
+                    if($hitung_hari > 7){
+                        $telat = $hitung_hari - 7;
+                        $denda = 500 * $telat;
+                    }else{
+                        $telat = 0;
+                        $denda = 0;
+                    }
                     $data = array(
                         'denda'         => '0',
                         'tgl_pinjam'    =>  date("Y-m-d"),
-                        'tgl_kembali'   => '(Diperpanjang)' );
+                        'tgl_kembali'   => '(Diperpanjang)',
+                        'lama_pinjam'   => $hitung_hari );
                     $id = $this->uri->segment(3);
                     $this->db->where('id_pinjam',$id);
                     $this->db->update('peminjaman',$data);
@@ -166,6 +179,7 @@
                     $data = array(
                         'denda' 		    =>  $denda,
                         'tgl_kembali'	    =>  date('Y-m-d'),
+                        'lama_pinjam'       =>  $hitung_hari,
                         'status'		    =>  'kembali' );
                     $id_pinjam = $this->uri->segment(3);
                     $this->db->where('id_pinjam', $id_pinjam);
