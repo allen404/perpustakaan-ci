@@ -8,7 +8,6 @@
                 <hr>
                 <tr>
                     <th>No </th>
-                    <th>Gambar Buku </th>
                     <th>ID Buku </th>
                     <th>Genre Buku</th>
                     <th>Judul Buku</th>
@@ -26,27 +25,24 @@
                         if ($offset == "") { $i = 0; } else { $i = $offset; }
 
                         foreach ($buku as $buku)
-                        { 
+                        {
                             $i++;
                     ?>
-                            <tr> 
+                            <tr>
                                 <td><?php echo $i; ?> </td>
-                                <td>
-                            <img src="<?php echo base_url('upload/buku/', $buku['foto']) ?>" width="64" /> 
-                                </td>
-                                <td><?= $buku['id_buku']?></td> 
-                                <td><?= $buku['genre_buku']?></td> 
-                                <td><?= $buku['judul_buku']?></td> 
-                                <td><?= $buku['id_penerbit']?></td> 
-                                <td><?= $buku['id_penulis']?></td> 
-                                <td><?= $buku['tahun_buku']?></td> 
-                                <td><?= $buku['jumlah_buku']?></td> 
+                                <td><?= $buku['id_buku']?></td>
+                                <td><?= $buku['genre_buku']?></td>
+                                <td><?= $buku['judul_buku']?></td>
+                                <td><?= $buku['id_penerbit']?></td>
+                                <td><?= $buku['id_penulis']?></td>
+                                <td><?= $buku['tahun_buku']?></td>
+                                <td><?= $buku['jumlah_buku']?></td>
                                 <td align="center">
                                     <a href="<?=base_url();?>c_buku/edit/<?= $buku['id_buku'] ?>" type="button" class="btn btn-warning"> EDIT </a>
                                     <a href="<?= base_url();?>c_buku/delete/<?= $buku['id_buku'] ?>" type="button" class="btn btn-danger"> HAPUS </a>
                                 </td>
                             </tr>
-                    <?php 
+                    <?php
                         }
                     ?>
 
