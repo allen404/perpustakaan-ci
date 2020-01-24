@@ -67,7 +67,7 @@ class Admin extends CI_Controller
                 $this->load->view('templates/footer');
             } else {
                 $this->Admin_model->tambahDataUser();
-                $this->session->set_flashdata('flash', 'Ditambahkan');
+                $this->session->set_flashdata('msg', 'Anggota Berhasil Ditambah');
                 redirect('admin/list_anggota');
             }
         }
@@ -82,7 +82,7 @@ class Admin extends CI_Controller
         if ($this->session->userdata('level') === '1')
         {
             $this->Admin_model->hapusDataUser($id);
-            $this->session->set_flashdata('flash', 'Dihapus');
+            $this->session->set_flashdata('msg', 'Anggota Berhasil Dihapus');
             redirect('admin/list_anggota');
         }
         else
@@ -131,7 +131,7 @@ class Admin extends CI_Controller
             else
             {
                 $this->Admin_model->ubahDataUser();
-                $this->session->set_flashdata('flash', 'Ditambahkan');
+                $this->session->set_flashdata('msg', 'Data anggota berhasil diubah');
                 redirect('admin/list_anggota');
             }
         }
@@ -186,7 +186,7 @@ class Admin extends CI_Controller
                 'no_telp'    =>  $this->input->post('no_telp',true)
                 ];
                 $this->db->insert('penerbit',$data);
-                $this->session->set_flashdata('flash', 'Ditambahkan');
+                $this->session->set_flashdata('msg', 'Penerbit berhasil ditambah');
                 redirect('admin/penerbit');
             }
         }
@@ -201,7 +201,7 @@ class Admin extends CI_Controller
         if ($this->session->userdata('level') === '1')
         {
             $this->db->delete('penerbit', ['id_penerbit' => $id]);
-            $this->session->set_flashdata('flash', 'Dihapus');
+            $this->session->set_flashdata('msg', 'Penerbit berhasil dihapus');
             redirect('admin/penerbit');
         }
         else
@@ -231,7 +231,7 @@ class Admin extends CI_Controller
             else
             {
                 $this->model_penerbit->updateDataPenerbit();
-                $this->session->set_flashdata('flash', 'Diubah');
+                $this->session->set_flashdata('msg', 'Data penerbit berhasil diupdate');
                 redirect('admin/penerbit');
             }
         }
@@ -279,7 +279,7 @@ class Admin extends CI_Controller
                 'lokasi'  =>  $this->input->post('lokasi',true),
                 ];
                 $this->db->insert('rak_buku',$data);
-                $this->session->set_flashdata('flash', 'Ditambahkan');
+                $this->session->set_flashdata('msg', 'Data rak buku berhasil diinput');
                 redirect('admin/rakBuku');
             }
         }
@@ -314,7 +314,7 @@ class Admin extends CI_Controller
                     ];
                     $this->db->where('kode_rak',$this->input->post('kode_rak'));
                     $this->db->update('rak_buku', $data);
-                    $this->session->set_flashdata('flash', 'Ditambahkan');
+                    $this->session->set_flashdata('msg', 'Data rak buku berhasil di update');
                     redirect('admin/rakBuku');
             }
         }
@@ -330,7 +330,7 @@ class Admin extends CI_Controller
         if ($this->session->userdata('level') === '1')
         {
         $this->db->delete('rak_buku', ['kode_rak' => $id]);
-        $this->session->set_flashdata('flash', 'Dihapus');
+        $this->session->set_flashdata('msg', 'Rak buku berhasil dihapus');
         redirect('admin/rakBuku');
         }
         else
@@ -385,6 +385,7 @@ class Admin extends CI_Controller
                 ];
 
                 $this->db->insert('reg_buku',$data);
+                $this->session->set_flashdata('msg', 'Buku berhasil diregistrasi');
                 redirect('admin/regBuku');
             }
         }
@@ -422,6 +423,7 @@ class Admin extends CI_Controller
                 ];
                 $this->db->where('no_reg',$this->input->post('no_reg'));
                 $this->db->update('reg_buku', $data);
+                $this->session->set_flashdata('msg', 'Data registrasi berhasil diubah');
                 redirect('admin/regBuku');
             }
         }
@@ -436,7 +438,7 @@ class Admin extends CI_Controller
         if ($this->session->userdata('level') === '1')
         {
             $this->db->delete('reg_buku', ['no_reg' => $id]);
-            $this->session->set_flashdata('flash', 'Dihapus');
+            $this->session->set_flashdata('msg', 'Data berhasil dihapus');
             redirect('admin/regBuku');
         }
         else
@@ -491,6 +493,7 @@ class Admin extends CI_Controller
                     'no_telp' => $this->input->post('no_telp')
                 ];
                 $this->db->insert('penulis',$data);
+                $this->session->set_flashdata('msg', 'Penulis berhasil ditambah');
                 redirect('admin/penulis');
 
 
@@ -531,6 +534,7 @@ class Admin extends CI_Controller
                     ];
                     $this->db->where('id_penulis',$this->input->post('id_penulis'));
                     $this->db->update('penulis', $data);
+                    $this->session->set_flashdata('msg', 'Data penulis berhasil diubah');
                     redirect('admin/penulis');
                 }
         }
@@ -546,7 +550,7 @@ class Admin extends CI_Controller
         if ($this->session->userdata('level') === '1')
         {
             $this->db->delete('penulis', ['id_penulis' => $id]);
-            $this->session->set_flashdata('flash', 'Dihapus');
+            $this->session->set_flashdata('msg', 'Penulis berhasil dihapus');
             redirect('admin/penulis');
         }
         else

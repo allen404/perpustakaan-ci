@@ -59,7 +59,7 @@
 
                           </fieldset>
                       </form>
-                      <center><b>You have Already registered ?</b> <br></b><a href="<?php echo base_url('login'); ?>"> Please Login</a></center><!--for centered text-->
+                      <center><b>Sudah melakukan registrasi?</b> <br></b><a href="<?php echo base_url('login'); ?>">Silahkan Login</a></center><!--for centered text-->
                   </div>
               </div>
           </div>

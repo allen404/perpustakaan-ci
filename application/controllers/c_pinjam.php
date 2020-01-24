@@ -102,7 +102,7 @@
                     if ($cek_buku > '0' ) {
                         $this->session->set_flashdata('msg', 'Proses ditolak, anggota telah meminjam buku tersebut.');
                         $this->session->keep_flashdata('msg');
-                        redirect('c_pinjam','refresh');
+                        redirect('c_pinjam');
                     }
                         else
                         {
@@ -116,6 +116,7 @@
                             'denda'             =>  '0',
                             'status'            => '');
                         $this->db->insert('peminjaman',$peminjaman);
+                        $this->session->set_flashdata('msg', 'Data peminjaman berhasil dimasukkan');
                         redirect('c_pinjam');
                         }
            }
@@ -150,7 +151,7 @@
                     $id = $this->uri->segment(3);
                     $this->db->where('id_pinjam',$id);
                     $this->db->update('peminjaman',$data);
-                    $this->session->set_flashdata('success', 'Peminjaman Buku berhasil diperpanjang!');
+                    $this->session->set_flashdata('msg', 'Peminjaman Buku berhasil diperpanjang!');
                     redirect('c_pinjam');
             }
             else
@@ -186,7 +187,7 @@
                     $this->db->where('id_pinjam', $id_pinjam);
                     $this->db->update('peminjaman',$data);
 
-                    $this->session->set_flashdata('success', 'Buku berhasil dikembalikan!');
+                    $this->session->set_flashdata('msg', 'Buku berhasil dikembalikan!');
                     redirect('c_pinjam');
             }
             else
@@ -205,6 +206,7 @@
                     $this->db->where('id_pinjam', $id_pinjam);
                     $this->db->delete('peminjaman');
                     $this->model_perpus->delete($id_pinjam);
+                    $this->session->set_flashdata('msg', 'Peminjaman berhasil dihapus');
                     redirect('c_pinjam');
             }
             else
