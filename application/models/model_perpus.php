@@ -36,7 +36,7 @@
      public function getPeminjaman($where,$table)
      {
         return $this->db->get_where($table,$where);
-        
+
      }
      function view_rakbuku()
      {
@@ -44,7 +44,7 @@
         $rak_buku = $this->db->get('rak_buku');
         return $rak_buku;
      }
-     
+
      function product($id_pinjam)
      {
          return $this->db->get_where('peminjaman',array('id_pinjam'=>$id_pinjam));
@@ -63,7 +63,7 @@
         $this->db->where('kode_rak',$kode_rak);
         $this->db->delete('rak_buku');
      }
-     
+
      function get_all_paginate($table,$order_by,$num, $offset) {
         $this->db->order_by($order_by, "ASC");
         $query = $this->db->get($table, $num, $offset);
@@ -74,10 +74,10 @@
         $query = $this->db->get($table, $num, $offset);
         return $query->result();
      }
-     
+
      function get_where_buku($id_pinjam,$id_buku)
     {
-        return $this->db->where('id_pinjam',$id_pinjam)->where('id_buku',$id_buku)->where('status','belum')->get('peminjaman');
+        return $this->db->where('no_identitas',$id_pinjam)->where('id_buku',$id_buku)->where('status','')->get('peminjaman');
     }
     function get_where_peminjaman($id_pinjam){
         return $this->db->where('id_pinjam',$id_pinjam)->where('status','belum')->get('peminjaman');

@@ -7,7 +7,7 @@
     <title>Sign In</title>
   </head>
   <body>
- 
+
       <div class="container">
        <div class="col-md-4 col-md-offset-4">
          <form class="form-signin" action="<?php echo site_url('user/auth');?>" method="post">
@@ -27,7 +27,7 @@
          <center><b> Belum Registrasi? </b> <br></b><a href="<?php echo base_url('login/register');?>">Registrasi Disini</a></center>
        </div>
        </div> <!-- /container -->
- 
+
        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
   </body>

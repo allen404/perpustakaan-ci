@@ -100,8 +100,9 @@
                     $cek 	  = $this->model_perpus->get_where_peminjaman($this->input->post('no_identitas'))->num_rows();
                     $cek_buku = $this->model_perpus->get_where_buku($this->input->post('no_identitas'),$this->input->post('id_buku'))->num_rows();
                     if ($cek_buku > '0' ) {
-                        $this->session->set_flashdata('error', 'Proses ditolak, anggota telah meminjam buku tersebut.');
-                        redirect($this->agent->referrer());
+                        $this->session->set_flashdata('msg', 'Proses ditolak, anggota telah meminjam buku tersebut.');
+                        $this->session->keep_flashdata('msg');
+                        redirect('c_pinjam','refresh');
                     }
                         else
                         {
