@@ -46,7 +46,11 @@
                     <td><?= $user['nama']?></td>
                     <td><?= $user['alamat']?></td>
                     <td><?= $user['email']?></td>
-                    <td><?= $user['level']?></td>
+                    <?php if ($user['level'] === '1'):?>
+                    <td>Admin</td>
+                    <?php elseif ($user['level'] === '2'):?>
+                    <td>Anggota</td>
+                    <?php endif; ?>
                     <td>
                         <a href="<?= base_url(); ?>admin/detail/<?= $user['id_user'] ?>" class="badge badge-success">detail</a>
                         <a href="<?= base_url(); ?>admin/ubah/<?= $user['id_user'] ?>" class="badge badge-warning">edit</a>
