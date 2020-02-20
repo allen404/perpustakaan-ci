@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2020 at 11:33 AM
+-- Generation Time: Jan 25, 2020 at 01:19 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -35,15 +35,19 @@ CREATE TABLE `buku` (
   `id_penerbit` varchar(10) NOT NULL,
   `id_penulis` varchar(10) NOT NULL,
   `tahun_buku` int(11) NOT NULL,
-  `jumlah_buku` int(11) NOT NULL
+  `jumlah_buku` int(11) NOT NULL,
+  `foto` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `buku`
 --
 
-INSERT INTO `buku` (`id_buku`, `genre_buku`, `judul_buku`, `id_penerbit`, `id_penulis`, `tahun_buku`, `jumlah_buku`) VALUES
-('B01', 'Pendidikan', 'Pelajaran Bahasa Indonesia', 'PB01', 'PN01', 2015, 3);
+INSERT INTO `buku` (`id_buku`, `genre_buku`, `judul_buku`, `id_penerbit`, `id_penulis`, `tahun_buku`, `jumlah_buku`, `foto`) VALUES
+('B01', 'Pendidikan', 'Pelajaran Bahasa Indonesia', 'PB01', 'PN01', 2015, 3, ''),
+('B02', 'Fantasi', 'Teknologi Informasi', 'PB01', 'PN01', 2019, 4, ''),
+('B03', 'Pendidikan', 'Teknologi Informasi', 'PB01', 'PN01', 2019, 6, 'C:\\xampp\\htdocs\\perpustakaan-ci\\upload\\gambar\\elang.jpg'),
+('B04', 'Fantasi', 'Teknologi Informasi', 'PB01', 'PN01', 2019, 3, '');
 
 -- --------------------------------------------------------
 
@@ -59,7 +63,7 @@ CREATE TABLE `peminjaman` (
   `tgl_kembali` varchar(20) DEFAULT NULL,
   `lama_pinjam` int(11) NOT NULL,
   `denda` int(11) NOT NULL,
-  `status` enum('kembali','perpanjang') DEFAULT NULL
+  `status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -67,9 +71,10 @@ CREATE TABLE `peminjaman` (
 --
 
 INSERT INTO `peminjaman` (`id_pinjam`, `no_identitas`, `id_buku`, `tgl_pinjam`, `tgl_kembali`, `lama_pinjam`, `denda`, `status`) VALUES
-(71, 16030051, 'B01', '2020-01-01', '2020-01-11', 10, 1500, 'kembali'),
-(72, 17030022, 'B01', '2020-01-11', '2020-01-11', 10, 0, 'kembali'),
-(73, 17030022, 'B01', '2020-01-02', '2020-01-11', 9, 1000, 'kembali');
+(81, 17030001, 'B03', '2020-01-10', 'Belum Kembali', 11, 0, ''),
+(88, 1730022, 'B01', '2020-01-24', 'Belum Kembali', 1, 0, ''),
+(89, 17030009, 'B01', '2020-01-24', 'Belum Kembali', 0, 0, ''),
+(90, 17030008, 'B01', '2020-01-24', 'Belum Kembali', 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -128,7 +133,7 @@ CREATE TABLE `rak_buku` (
 
 INSERT INTO `rak_buku` (`kode_rak`, `lokasi`) VALUES
 ('R01', 'Lt1 001-050'),
-('R02', 'Lt1 050-100');
+('R02', 'Lt1 050-101');
 
 -- --------------------------------------------------------
 
@@ -148,7 +153,7 @@ CREATE TABLE `reg_buku` (
 --
 
 INSERT INTO `reg_buku` (`no_reg`, `id_buku`, `kode_rak`, `tgl_registrasi`) VALUES
-('RG001', 'B01', 'R01', '2020-01-02');
+('RG001', 'B02', 'R01', '2020-01-02');
 
 -- --------------------------------------------------------
 
@@ -177,7 +182,6 @@ CREATE TABLE `user` (
   `alamat` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `status` varchar(20) NOT NULL,
   `level` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -185,9 +189,13 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `no_identitas`, `nama`, `alamat`, `email`, `password`, `status`, `level`) VALUES
-(4, 17030008, 'Diky Allen Prasetya', 'Banguntapan, Bantul', 'allen_diky@outlook.com', '5a2643513cede0ccf53179378caaa950', '', '1'),
-(5, 17030022, 'Rosalia Setia Nursanti', 'Banguntapan, Bantul', 'rosaliasetianursanti@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', '2');
+INSERT INTO `user` (`id_user`, `no_identitas`, `nama`, `alamat`, `email`, `password`, `level`) VALUES
+(4, 17030008, 'Diky Allen Prasety', 'Banguntapan, Bantul', 'allen_diky@outlook.com', 'e10adc3949ba59abbe56e057f20f883e', '1'),
+(5, 17030022, 'Rosaaaaa', 'Banguntapan, Bantul', 'rosaliasetianursanti@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2'),
+(6, 123456, 'Rosalia Setia Nursanti', 'Yogyakarta', 'rosalia.setia91@gmail.com', 'c36cdeb03e1848dea196a019040d02c7', '1'),
+(9, 17030001, 'Nur Ali Muchtarom', 'Yogyakarta', 'nalimuchtarom@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2'),
+(10, 170300221, 'ririn', 'awawwae', 'ririn@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '1'),
+(11, 17030082, 'Resqi', 'Universitas Gang Maguwo', 'resqitri@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '1');
 
 --
 -- Indexes for dumped tables
@@ -255,13 +263,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
