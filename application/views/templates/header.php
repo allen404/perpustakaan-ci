@@ -5,29 +5,21 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-
-
-
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
   <!-- My CSS -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="<?= base_url();?>assets/css/style.css">
-
   <script src="<?= base_url();?>assets/js/main.js"></script>
   <script src="<?= base_url(); ?>assets/js/sweetalert2.all.min.js"></script>
   <script src="<?= base_url(); ?>assets/js/myscript.js"></script>
-
-
 </head>
 
 <body>
 
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Perpustakaan Ambyar</a>
+      <a class="navbar-brand" style="color: white">Perpustakaan-CI</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -70,7 +62,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['nama']?> (<?= $_SESSION['no_identitas'] ?>)
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Edit Profile</a>
+                <a class="dropdown-item" href="<?= base_url();?>Editprofil">Edit Profile</a>
                 <a class="dropdown-item" href="<?php echo site_url('user/logout');?>">Logout</a>
             </div>
               </li>

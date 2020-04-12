@@ -1,4 +1,16 @@
 <div class="container" style="margin-top: 20px">
+<?php if ($this->session->flashdata('msg')) : ?>
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                <?= $this->session->flashdata('msg'); ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
     <div class="row">
         <div class="col-md-12">
             <h2 style="text-align: left;margin-bottom: 30px; color:black;">Data Buku</h2>
@@ -8,7 +20,6 @@
                 <hr>
                 <tr>
                     <th>No </th>
-                    <th>Gambar Buku </th>
                     <th>ID Buku </th>
                     <th>Genre Buku</th>
                     <th>Judul Buku</th>
@@ -26,27 +37,24 @@
                         if ($offset == "") { $i = 0; } else { $i = $offset; }
 
                         foreach ($buku as $buku)
-                        { 
+                        {
                             $i++;
                     ?>
-                            <tr> 
+                            <tr>
                                 <td><?php echo $i; ?> </td>
-                                <td>
-                            <img src="<?php echo base_url('upload/buku/', $buku['foto']) ?>" width="64" /> 
-                                </td>
-                                <td><?= $buku['id_buku']?></td> 
-                                <td><?= $buku['genre_buku']?></td> 
-                                <td><?= $buku['judul_buku']?></td> 
-                                <td><?= $buku['id_penerbit']?></td> 
-                                <td><?= $buku['id_penulis']?></td> 
-                                <td><?= $buku['tahun_buku']?></td> 
-                                <td><?= $buku['jumlah_buku']?></td> 
+                                <td><?= $buku['id_buku']?></td>
+                                <td><?= $buku['genre_buku']?></td>
+                                <td><?= $buku['judul_buku']?></td>
+                                <td><?= $buku['id_penerbit']?></td>
+                                <td><?= $buku['id_penulis']?></td>
+                                <td><?= $buku['tahun_buku']?></td>
+                                <td><?= $buku['jumlah_buku']?></td>
                                 <td align="center">
                                     <a href="<?=base_url();?>c_buku/edit/<?= $buku['id_buku'] ?>" type="button" class="btn btn-warning"> EDIT </a>
                                     <a href="<?= base_url();?>c_buku/delete/<?= $buku['id_buku'] ?>" type="button" class="btn btn-danger"> HAPUS </a>
                                 </td>
                             </tr>
-                    <?php 
+                    <?php
                         }
                     ?>
 

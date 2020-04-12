@@ -7,7 +7,6 @@
                 <hr>
                 <tr>
                     <th>No </th>
-                    <th>Gambar Buku </th>
                     <th>ID Buku </th>
                     <th>Genre Buku</th>
                     <th>Judul Buku</th>
@@ -15,31 +14,30 @@
                     <th>ID Penulis</th>
                     <th>Tahun Buku</th>
                     <th>Jumlah Buku</th>
+                    <th>Lokasi</th>
                 </tr>
               </thead>
               <tbody>
                     <?php
                         $offset = "";
                         if ($offset == "") { $i = 0; } else { $i = $offset; }
-
-                        foreach ($buku as $buku)
-                        { 
+                        $query = $this->db->query("SELECT b.id_buku, b.judul_buku, b.genre_buku, d.nama_penerbit, e.nama_penulis, b.tahun_buku, b.jumlah_buku, c.lokasi FROM reg_buku a, buku b, rak_buku c, penerbit d, penulis e WHERE a.id_buku = b.id_buku and a.kode_rak = c.kode_rak AND b.id_penerbit = d.id_penerbit AND b.id_penulis = e.id_penulis");
+                        foreach ($query->result() as $buku)
+                        {
                             $i++;
                     ?>
-                            <tr> 
+                            <tr>
                                 <td><?php echo $i; ?> </td>
-                                <td>
-                            <img src="<?php echo base_url('upload/buku/', $buku['foto']) ?>" width="64" /> 
-                                </td>
-                                <td><?= $buku['id_buku']?></td> 
-                                <td><?= $buku['genre_buku']?></td> 
-                                <td><?= $buku['judul_buku']?></td> 
-                                <td><?= $buku['id_penerbit']?></td> 
-                                <td><?= $buku['id_penulis']?></td> 
-                                <td><?= $buku['tahun_buku']?></td> 
-                                <td><?= $buku['jumlah_buku']?></td> 
+                                <td><?php echo $buku->id_buku;?></td>
+                                <td><?php echo $buku->judul_buku?></td>
+                                <td><?php echo $buku->genre_buku?></td>
+                                <td><?php echo $buku->nama_penerbit?></td>
+                                <td><?php echo $buku->nama_penulis?></td>
+                                <td><?php echo $buku->tahun_buku?></td>
+                                <td><?php echo $buku->jumlah_buku?></td>
+                                <td><?php echo $buku->lokasi?></td>
                             </tr>
-                    <?php 
+                    <?php
                         }
                     ?>
 

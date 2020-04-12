@@ -1,17 +1,18 @@
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<!-- bootstrap js -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-<style>
-.btn-success{margin: 10px;}
-</style>
-</head>
-<body>
-
 <div class="container" style="margin-top: 20px">
+
+<div class="flash-data" data-flashdata="<?=$this->session->flashdata('flash');?>"></div>
+<?php if ($this->session->flashdata('msg')) : ?>
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                <?= $this->session->flashdata('msg'); ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
     <div class="row">
         <div class="col-md-12">
             <h2 ><?php echo $judul; ?></h2>
@@ -31,25 +32,26 @@
                     <th>Lama Pinjam </th>
                     <th>Denda</th>
                     <th style="width:125px;">Status</th>
-                    
+
                 </tr>
               </thead>
               <tbody>
                     <?php
                         $offset = "";
                         if ($offset == "") { $i = 0; } else { $i = $offset; }
-                        foreach ($peminjaman as $p) 
+                        foreach ($peminjaman as $p)
                         {
                             $i++;
-                            $tgl_kembali = $p->tgl_kembali;
+                            $tgl_kembali = $p->tgl_pinjam;
                             $kembali = $p->tgl_pinjam;
                             $cari_hari = abs(strtotime($kembali) - strtotime($tgl_kembali));
                             $hitung_hari = floor($cari_hari/(60*60*24));
-                            
+
+
                         ?>
                         <form method="post" action="<?php echo base_url('c_pinjam/kembali/'.$p->id_pinjam."/".$p->id_buku) ?>">
-                            
-                            <tr> 
+
+                            <tr>
                                 <td><?php echo $i; ?></td>
                                 <td><?php echo $p->nama; echo ' ('.$p->no_identitas.')'; ?></td>
                                 <td><?php echo $p->judul_buku; echo ' ('.$p->id_buku.')'; ?></td>
@@ -65,9 +67,9 @@
                             </tr>
                             <input type="hidden" name="denda">
                         </form>
-                        <?php 
+                        <?php
                             }
-                        
+
                         ?>
 
               </tbody>
@@ -87,11 +89,11 @@
                     <span aria-hidden="true">&times;</span>
                     <span class="sr-only">Tutup</span>
                 </button>
-                
+
             </div>
 
             <!-- Modal Body -->
-            
+
             <div class="modal-body">
                 <p class="statusMsg"></p>
                 <form action="c_pinjam/input_simpan" method="post">
@@ -106,20 +108,20 @@
                     <div class="form-group">
                         <label for="tgl_pinjam">Tanggal Pinjam</label>
                         <input type="date" class="form-control" id="tgl_pinjam" name="tgl_pinjam" placeholder="Masukkan Tanggal Pinjam" required/>
-                    </div> 
-                    
+                    </div>
+
                     <div class="modal-footer">
                         <form action="c_pinjam/input_simpan" method="post">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
                         <button type="submit" class="btn btn-primary submitBtn"> Simpan Data </button>
                         </form>
-                    </div> 
+                    </div>
                 </form>
             </div>
-           
+
 
             <!-- Modal Footer -->
-            
+
         </div>
     </div>
 </div>
