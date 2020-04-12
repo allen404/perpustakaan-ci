@@ -1,4 +1,16 @@
 <div class="container" style="margin-top: 20px">
+<?php if ($this->session->flashdata('msg')) : ?>
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                <?= $this->session->flashdata('msg'); ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
     <div class="row">
         <div class="col-md-12">
             <h2 style="text-align: left;margin-bottom: 30px; color:black;"> Data Rak Buku </h2>
@@ -18,11 +30,11 @@
                         $offset = "";
                         if ($offset == "") { $i = 0; } else { $i = $offset; }
                         foreach ($rak_buku as $rak)
-                        { 
+                        {
                             $i++;
                     ?>
-                            <tr> 
-                                
+                            <tr>
+
                                 <td><?php echo $i; ?> </td>
                                 <td><?= $rak['kode_rak']?></td>
                                 <td><?= $rak['lokasi'] ?></td>
@@ -31,7 +43,7 @@
                                     <a href="<?= base_url();?>admin/hapusRakBuku/<?= $rak['kode_rak']?>" class="btn btn-danger">Hapus</a>
                                 </td>
                             </tr>
-                    <?php 
+                    <?php
                         }
                     ?>
 

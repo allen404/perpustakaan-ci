@@ -1,16 +1,16 @@
 <div class="container">
 <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
-    <?php if ($this->session->flashdata('flash')) : ?>
-    <!-- <div class="row mt-3">
+<?php if ($this->session->flashdata('msg')) : ?>
+    <div class="row mt-3">
         <div class="col-md-6">
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                Data mahasiswa <strong>berhasil</strong> <?= $this->session->flashdata('flash'); ?>.
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                <?= $this->session->flashdata('msg'); ?>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
         </div>
-    </div> -->
+    </div>
     <?php endif; ?>
 
     <div class="row mt-3">
@@ -46,7 +46,11 @@
                     <td><?= $user['nama']?></td>
                     <td><?= $user['alamat']?></td>
                     <td><?= $user['email']?></td>
-                    <td><?= $user['level']?></td>
+                    <?php if ($user['level'] === '1'):?>
+                    <td>Admin</td>
+                    <?php elseif ($user['level'] === '2'):?>
+                    <td>Anggota</td>
+                    <?php endif; ?>
                     <td>
                         <a href="<?= base_url(); ?>admin/detail/<?= $user['id_user'] ?>" class="badge badge-success">detail</a>
                         <a href="<?= base_url(); ?>admin/ubah/<?= $user['id_user'] ?>" class="badge badge-warning">edit</a>

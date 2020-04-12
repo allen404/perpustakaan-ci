@@ -77,7 +77,7 @@
 
         function input_simpan()
         {
-          
+
            if ($this->session->userdata('level') === '1'){
 
                     $this->load->model('model_perpus');
@@ -99,9 +99,10 @@
 
                     $cek 	  = $this->model_perpus->get_where_peminjaman($this->input->post('no_identitas'))->num_rows();
                     $cek_buku = $this->model_perpus->get_where_buku($this->input->post('no_identitas'),$this->input->post('id_buku'))->num_rows();
-                    if ($cek_buku>0) {
-                        $this->session->set_flashdata('error', 'Proses ditolak, anggota telah meminjam buku tersebut.');
-                        redirect($this->agent->referrer());
+                    if ($cek_buku > '0' ) {
+                        $this->session->set_flashdata('msg', 'Proses ditolak, anggota telah meminjam buku tersebut.');
+                        $this->session->keep_flashdata('msg');
+                        redirect('c_pinjam');
                     }
                         else
                         {
@@ -112,8 +113,10 @@
                             'tgl_pinjam'        =>  $this->input->post('tgl_pinjam'),
                             'tgl_kembali'       =>  $nilai_kembali,
                             'lama_pinjam'       =>  $hitung_hari,
-                            'denda'             =>  '0');
+                            'denda'             =>  '0',
+                            'status'            => '');
                         $this->db->insert('peminjaman',$peminjaman);
+                        $this->session->set_flashdata('msg', 'Data peminjaman berhasil dimasukkan');
                         redirect('c_pinjam');
                         }
            }
@@ -129,6 +132,18 @@
             if ($this->session->userdata('level') === '1')
             {
                     $this->load->model('model_perpus');
+                    $this->load->model('model_perpus');
+                    $tgl_kembali = date('d-m-Y');
+                    $cari_hari = abs(strtotime($this->input->post('tgl_pinjam')) - strtotime($tgl_kembali));
+                    $hitung_hari = floor($cari_hari/(60*60*24));
+
+                    if($hitung_hari > 7){
+                        $telat = $hitung_hari - 7;
+                        $denda = 500 * $telat;
+                    }else{
+                        $telat = 0;
+                        $denda = 0;
+                    }
                     $data = array(
                         'denda'         => '0',
                         'tgl_pinjam'    =>  date("Y-m-d"),
@@ -136,7 +151,7 @@
                     $id = $this->uri->segment(3);
                     $this->db->where('id_pinjam',$id);
                     $this->db->update('peminjaman',$data);
-                    $this->session->set_flashdata('success', 'Peminjaman Buku berhasil diperpanjang!');
+                    $this->session->set_flashdata('msg', 'Peminjaman Buku berhasil diperpanjang!');
                     redirect('c_pinjam');
             }
             else
@@ -166,12 +181,13 @@
                     $data = array(
                         'denda' 		    =>  $denda,
                         'tgl_kembali'	    =>  date('Y-m-d'),
+                        'lama_pinjam'       =>  $hitung_hari,
                         'status'		    =>  'kembali' );
                     $id_pinjam = $this->uri->segment(3);
                     $this->db->where('id_pinjam', $id_pinjam);
                     $this->db->update('peminjaman',$data);
 
-                    $this->session->set_flashdata('success', 'Buku berhasil dikembalikan!');
+                    $this->session->set_flashdata('msg', 'Buku berhasil dikembalikan!');
                     redirect('c_pinjam');
             }
             else
@@ -190,6 +206,7 @@
                     $this->db->where('id_pinjam', $id_pinjam);
                     $this->db->delete('peminjaman');
                     $this->model_perpus->delete($id_pinjam);
+                    $this->session->set_flashdata('msg', 'Peminjaman berhasil dihapus');
                     redirect('c_pinjam');
             }
             else
