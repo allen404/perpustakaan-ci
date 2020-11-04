@@ -54,7 +54,7 @@ class Admin extends CI_Controller
         if ($this->session->userdata('level') === '1')
         {
             $data['judul'] = 'Form Tambah Data User';
-
+//testing wet
             $this->form_validation->set_rules('nama', 'nama', 'required');
             $this->form_validation->set_rules('no_identitas', 'Nomor_identitas', 'required');
             $this->form_validation->set_rules('password', 'Password', 'required');
